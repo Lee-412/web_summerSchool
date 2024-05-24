@@ -1,6 +1,6 @@
 'use client'
 
-
+import "../headerApp/header.css"
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -66,10 +66,7 @@ export default function AppHeader() {
                     </Link>
                 </MenuItem>
                 <MenuItem>
-                    <Link href={"/newsPage"} style={{
-                        color: 'unset',
-                        textDecoration: 'unset',
-                    }}>
+                    <Link href={"/newsPage"} >
                         Tin tức
                     </Link>
                 </MenuItem>
