@@ -1,69 +1,68 @@
+
+
 'use client'
+import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, useState } from 'react';
+import './slider.css'
+import { Box } from '@mui/material';
+import { Button } from 'antd';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import NewsItem from './newsItem';
 
+const ImageSlider = (props: any) => {
 
-import { Box, Slider } from "@mui/material";
-import Button from "@mui/material/Button/Button";
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Divider from '@mui/material/Divider';
+    console.log(props);
+    console.log(props.sliderData[0].title);
 
+    const [currentIndex, setCurrentIndex] = useState(0);
 
-interface IProps {
-    title: String,
-    // data: []
-}
-const MainSlider = (props: IProps) => {
+    const handlePrev = () => {
+        setCurrentIndex((prevIndex) =>
+            (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
+    };
 
-    const NextArrow = (props: any) => {
-        return (
-            <Button color="inherit" variant="contained"
-                onClick={props.onClick}
-                sx={{
-                    position: "absolute",
-                    right: 25,
-                    top: "25%",
-                    zIndex: 2,
-                    minWidth: 30,
-                    width: 35,
-                }}
-            >
-                <ChevronRightIcon />
-            </Button>
-        )
-    }
-
-    const PrevArrow = (props: any) => {
-        return (
-            <Button color="inherit" variant="contained"
-                onClick={props.onClick}
-                sx={{
-                    position: "absolute",
-                    top: "25%",
-                    zIndex: 2,
-                    minWidth: 30,
-                    width: 35,
-                }}
-            >
-                <ChevronLeftIcon />
-            </Button>
-        )
-    }
-
-
-
-    //box === div
+    const handleNext = () => {
+        setCurrentIndex((prevIndex) => (prevIndex === props.sliderData.length - 1 ? 0 : prevIndex + 1));
+    };
 
     return (
+        <Box sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            flexDirection: "column"
 
-        <Box
+        }}>
 
-        >
-            <h2> {props.title} </h2>
+            <Box>
+                {
+                    props.sliderData.map((data: { id: number; title: string; img: string; }, index: number) => {
+                        return (
+                            <div style={{
+                                // display: "block"
+                                display: index === currentIndex ? 'block' : 'none'
+                            }}>
 
+                                <NewsItem
+                                    title={data.title}
+                                    img={data.img} />
+                            </div>
+                        )
+                    })
+                }
+            </Box>
 
-            <Divider />
-        </Box>
+            <Box sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "Center"
+            }}>
+                <Button onClick={handlePrev}><ArrowBackIosNewIcon /></Button>
+                <Button onClick={handleNext}><ArrowForwardIosIcon /></Button>
+            </Box>
 
+        </Box >
     );
-}
-export default MainSlider;
+};
+
+export default ImageSlider;

@@ -188,7 +188,6 @@ export default function AppHeader() {
 
                 </Box>
             </AppBar>
-            <br />
             {renderMobileMenu}
         </Box >
     );
