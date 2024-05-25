@@ -1,6 +1,6 @@
 'use client'
 
-import { Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
+import { Box, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
 
 
 export default function ReviewCard() {
@@ -8,14 +8,15 @@ export default function ReviewCard() {
 
 
     return (
-        <Card sx={{ maxWidth: 345, backgroundColor: "#007ec5" }}>
+        <Box sx={{ maxWidth: 200, backgroundColor: "#007ec5" }}>
 
             <CardMedia
                 component="img"
                 height="194"
-                image="/static/images/cards/paella.jpg"
+                image=""
                 alt="Paella dish"
             />
+
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
                     This impressive paella is a perfect party dish and a fun meal to cook
@@ -25,6 +26,6 @@ export default function ReviewCard() {
             </CardContent>
 
 
-        </Card>
+        </Box>
     );
 }

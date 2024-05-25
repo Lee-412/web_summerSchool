@@ -21,7 +21,7 @@ const HomeCourses = () => {
             <Box sx={{
                 marginTop: "50px",
                 display: "flex",
-                justifyContent: "space-evenly"
+                justifyContent: "space-between"
             }}>
                 <ReviewCard />
                 <ReviewCard />

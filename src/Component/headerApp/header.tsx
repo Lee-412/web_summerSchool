@@ -13,7 +13,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button, } from '@mui/material';
-
+import './header.css'
 
 export default function AppHeader() {
 
@@ -58,10 +58,13 @@ export default function AppHeader() {
             >
 
                 <MenuItem>
-                    <Link href={"/"} style={{
-                        color: 'unset',
-                        textDecoration: 'unset',
-                    }}>
+                    <Link href={"/"}
+
+                        style={{
+                            color: 'unset',
+                            textDecoration: 'unset',
+                        }}
+                    >
                         Trang chủ
                     </Link>
                 </MenuItem>
@@ -137,7 +140,8 @@ export default function AppHeader() {
                     }}>
 
                         <>
-                            <Link href={"/"}>
+                            <Link href={"/"}
+                            >
                                 Trang chủ
                             </Link>
                             <Link href={"/newsPage"}>
