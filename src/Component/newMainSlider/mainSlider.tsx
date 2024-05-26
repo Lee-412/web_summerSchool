@@ -1,7 +1,5 @@
-
-
 'use client'
-import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, useState } from 'react';
+import { useState } from 'react';
 import './slider.css'
 import { Box } from '@mui/material';
 import { Button } from 'antd';
@@ -12,7 +10,6 @@ import NewsItem from './newsItem';
 const ImageSlider = (props: any) => {
 
     console.log(props);
-    console.log(props.sliderData[0].title);
 
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -36,15 +33,21 @@ const ImageSlider = (props: any) => {
 
             <Box>
                 {
-                    props.sliderData.map((data: { id: number; title: string; img: string; }, index: number) => {
+                    props.sliderData.map((data: {
+                        id: number; title: string; category: string; img: string;
+                    },
+                        index: number) => {
                         return (
-                            <div style={{
-                                // display: "block"
-                                display: index === currentIndex ? 'block' : 'none'
-                            }}>
+                            <div
+                                key={data.id}
+                                style={{
+                                    display: index === currentIndex ? 'block' : 'none'
+                                }}>
 
                                 <NewsItem
+
                                     title={data.title}
+                                    category={data.category}
                                     img={data.img} />
                             </div>
                         )

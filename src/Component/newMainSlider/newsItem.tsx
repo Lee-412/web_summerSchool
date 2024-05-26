@@ -6,7 +6,8 @@ import './newsItem.css'
 import TagNumber from "../tagNumber/tagnumber";
 interface IProps {
     title: string,
-    img: string
+    img: string,
+    category: string,
 }
 
 const NewsItem = (props: IProps) => {
@@ -16,12 +17,15 @@ const NewsItem = (props: IProps) => {
     const handleClickLearnMore = () => {
         router.push('/');
     }
+    console.log(`${process.env.STRAPI_LINK_URL}${props.img}`);
+    console.log(props.category);
+
     return (
         <Container sx={{
             marginLeft: "3%",
             display: "flex",
             width: "100%",
-            height: "50%"
+            height: "500px",
         }}>
 
             <div className="lefDiv" >
@@ -29,10 +33,9 @@ const NewsItem = (props: IProps) => {
                 <span className="title">
                     {props.title}
                 </span>
-
-                <p className="infor">
-                    Accessible education for all.
-                </p>
+                <span >
+                    {props.category}
+                </span>
 
                 <Button
                     onClick={handleClickLearnMore}
@@ -44,13 +47,15 @@ const NewsItem = (props: IProps) => {
 
             </div>
             <div className="rightDiv">
-                <img src={`${process.env.STRAPI_LINK_URL}${props.img}`} alt="" style={{
+                <img src={`http://127.0.0.1:1337${props.img}`} alt="" style={{
                     width: "90%",
                     height: "100%",
                     objectFit: 'cover',
                     borderRadius: "50px",
 
                 }} />
+
+
             </div>
         </Container>
 

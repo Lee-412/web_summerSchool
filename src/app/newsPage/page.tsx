@@ -9,46 +9,44 @@ import { log } from "console";
 const NewsPgae = async () => {
     const res = await fetch(`${process.env.STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
     const news = await res.json()
-    // console.log(news);
-    // const datas = {
-    //     id: news.data.id,
-    //     title: news.data.attributes.title,
-    //     category: news.data.attributes.category,
-    //     content: news.data.attributes.content.children.text,
-    //     url_img: news.data.attributes.media.url
+    console.log(news);
 
-    // }
-    // console.log(datas);
-    // console.log(news.data);
+    // console.log(news.data[1].id);
     const slider: any[] = []
     news.data.map((new1: any) => {
-        // console.log(course.attributes.Thumbnail.data.attributes.url);
         // console.log(new1.attributes);
         const img_url = new1.attributes.media.data[0].attributes.url;
         // console.log(img_url);
         const _id = new1.id
         const title = new1.attributes.title
+
         // console.log(title);
+        const _category = new1.attributes.category
+        // console.log(_category);
+
+        const _author = new1.attributes.Author
+        // console.log(_author);
+        const _content = new1.attributes.content[0].children[0].text
+        // console.log(_content);
 
         const slider_data =
         {
             id: _id,
+            author: _author,
+            content: _content,
+            category: _category,
             img: img_url,
             title: title,
         }
         slider.push(slider_data)
     })
-    //chay map. nem data theo news.data[0]
-    //nem 1 cuc data, nhung dong nghia voi viec phai viet interface
+
     return (
         <Box>
             <HeaderApp />
-
             <MainSlider
                 sliderData={slider}
             />
-
-
             <FooterApp />
         </Box>
     )

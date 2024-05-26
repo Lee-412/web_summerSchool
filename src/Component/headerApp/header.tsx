@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button, } from '@mui/material';
 import './header.css'
+import StudentFormModal from "../formModalRegister/formRegister";
 
 export default function AppHeader() {
 
@@ -30,9 +31,18 @@ export default function AppHeader() {
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const clickResgister = () => {
-        alert("Đăng ký ngay")
+        setOpen(true);
     }
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -188,6 +198,7 @@ export default function AppHeader() {
 
                 </Box>
             </AppBar>
+            <StudentFormModal open={open} setOpen={setOpen} />
             {renderMobileMenu}
         </Box >
     );
