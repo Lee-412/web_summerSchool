@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
-import postLearnerData from '@/Component/formModalRegister/postData';
+import postLearnerData, { postFileData } from '@/Component/formModalRegister/postData';
 import {data} from '@/Component/formModalRegister/postData';
 const genders = [
     { value: 'male', label: 'Male' },
@@ -33,7 +33,7 @@ const StudentFormModal = (props: any) => {
         address: '',
         phone: '',
         courses: '',
-        avatar: '',
+        avatar: new File([""], "filename"),
         purpose: '',
     });
 
@@ -48,7 +48,7 @@ const StudentFormModal = (props: any) => {
     const handleAvatarChange = (e: any) => {
         setFormData({
             ...formData,
-            avatar: URL.createObjectURL(e.target.files[0]),
+            avatar: e.target.files[0],
         });
     };
 
@@ -56,22 +56,28 @@ const StudentFormModal = (props: any) => {
         e.preventDefault();
         console.log(formData);
         let dataToServer = {
-            name: formData.name,
-            Birthday: formData.birthday,
-            IdentityCode: formData.identityCode,
-            MSV: formData.msv,
-            email: formData.email,
-            phone: formData.phone,
-            gender: formData.gender,
-            Address: formData.address,
-            Purpose: formData.purpose,
-            classification: formData.role,
-            avtar: formData.avatar
+                name: formData.name,
+                Birthday: formData.birthday,
+                IdentityCode: formData.identityCode,
+                MSV: formData.msv,
+                email: formData.email,
+                phone: formData.phone,
+                gender: formData.gender,
+                Address: formData.address,
+                Purpose: formData.purpose,
+                classification: formData.role,
+                files: {
+                    avatar: formData.avatar
+                }
+            
         }
         console.log(formData.avatar);
         console.log(dataToServer);
-        
+        let formdata = new FormData()
+        formdata.append('data', JSON.stringify(dataToServer))
+        console.log(formData);
         postLearnerData(dataToServer);
+        let filedata = new FormData()
         setOpen(false);
         setFormData({
             identityCode: '',
@@ -84,7 +90,7 @@ const StudentFormModal = (props: any) => {
             address: '',
             phone: '',
             courses: '',
-            avatar: '',
+            avatar: new File([""], "filename"),
             purpose: '',
         })
     };
@@ -104,7 +110,7 @@ const StudentFormModal = (props: any) => {
                                 <input type="file" hidden onChange={handleAvatarChange} />
                             </Button>
                             <Box sx={{ width: "3%" }}></Box>
-                            {formData.avatar && <Avatar src={formData.avatar} alt="avatar" />}
+                            {formData.avatar && <Avatar src={URL.createObjectURL(formData.avatar)} alt="avatar" />}
                         </Grid>
                         <Grid item xs={12}>
 
