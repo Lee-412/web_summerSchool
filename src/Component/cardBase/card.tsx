@@ -1,5 +1,6 @@
 'use client'
 
+import "./card.css"
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
 
 
@@ -15,7 +16,7 @@ export default function ReviewCard(cardInfo:any) {
                 backgroundColor: "#007ec5" ,
                 borderRadius: 5,
                 marginBottom: 6
-             }}>
+             }} className="card">
 
             <CardMedia
                 component="img"
