@@ -5,14 +5,14 @@ import { log } from "console";
 
 const HomeCourses = async () => {
 
-    const res = await fetch(`${process.env.STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
     const courses = await res.json()
     // console.log(courses);
     let cards: any[] = []
     courses.data.map((course: any) => {
         // console.log(course.attributes.Thumbnail.data.attributes.url);
         //console.log(course.attributes);
-        let img_url = `${process.env.STRAPI_LINK_URL}${course.attributes.Thumbnail.data.attributes.url}`
+        let img_url = `${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}${course.attributes.Thumbnail.data.attributes.url}`
         let title = `${course.attributes.name}`
         let card_info =
         {
