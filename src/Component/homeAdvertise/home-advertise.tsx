@@ -1,10 +1,10 @@
 'use client'
 
 import { Button, Container } from "@mui/material";
-import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { useRouter } from "next/navigation";
 import './advertise.css'
 import TagNumber from "../tagNumber/tagnumber";
+
 const AboutAdvertise = () => {
 
     const router = useRouter()
@@ -60,7 +60,7 @@ const AboutAdvertise = () => {
                     </div>
                 </div>
                 <div className="rightDiv">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7P1f6rbRPbDkOy2RvsPDS-VDJyAD9pDP9ueDnWLH5bw&s" alt="" style={{
+                    <img src="" alt="" style={{
                         width: "90%",
                         height: "73%",
                         objectFit: 'cover',

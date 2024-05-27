@@ -13,7 +13,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { Button, } from '@mui/material';
-
+import './header.css'
+import StudentFormModal from "../formModalRegister/formRegister";
 
 export default function AppHeader() {
 
@@ -30,9 +31,18 @@ export default function AppHeader() {
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
+    const [open, setOpen] = useState(false);
+
+    const handleOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     const clickResgister = () => {
-        alert("Đăng ký ngay")
+        setOpen(true);
     }
 
     const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -58,10 +68,13 @@ export default function AppHeader() {
             >
 
                 <MenuItem>
-                    <Link href={"/"} style={{
-                        color: 'unset',
-                        textDecoration: 'unset',
-                    }}>
+                    <Link href={"/"}
+
+                        style={{
+                            color: 'unset',
+                            textDecoration: 'unset',
+                        }}
+                    >
                         Trang chủ
                     </Link>
                 </MenuItem>
@@ -134,7 +147,8 @@ export default function AppHeader() {
                     }}>
 
                         <>
-                            <Link href={"/"}>
+                            <Link href={"/"}
+                            >
                                 Trang chủ
                             </Link>
                             <Link href={"/newsPage"}>
@@ -184,7 +198,7 @@ export default function AppHeader() {
 
                 </Box>
             </AppBar>
-            <br />
+            <StudentFormModal open={open} setOpen={setOpen} />
             {renderMobileMenu}
         </Box >
     );

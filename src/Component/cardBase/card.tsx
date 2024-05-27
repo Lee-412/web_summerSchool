@@ -4,10 +4,10 @@ import "./card.css"
 import { Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
 
 
-export default function ReviewCard(cardInfo:any) {
+export default function ReviewCard(cardInfo: any) {
 
-   // console.log(cardInfo.card_info)
-    
+    // console.log(cardInfo.card_info)
+
 
     return (
         <Card sx=
@@ -21,6 +21,7 @@ export default function ReviewCard(cardInfo:any) {
             <CardMedia
                 component="img"
                 height="194"
+
                 image={cardInfo.card_info.img}
                 alt="Paella dish"
                 sx={{
@@ -29,11 +30,12 @@ export default function ReviewCard(cardInfo:any) {
                     borderRadius: 5
                 }}
             />
+
             <CardContent>
                 <Typography variant="body2" color="white"
-                sx={{
-                    textAlign: "center"
-                }}>
+                    sx={{
+                        textAlign: "center"
+                    }}>
                     {cardInfo.card_info.title}
                 </Typography>
             </CardContent>
