@@ -1,6 +1,7 @@
 'use client'
 
-import { Box, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
+import "./card.css"
+import { Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, IconButton, Typography } from "@mui/material";
 
 
 export default function ReviewCard(cardInfo: any) {
@@ -9,8 +10,13 @@ export default function ReviewCard(cardInfo: any) {
 
 
     return (
-        <Box sx={{ maxWidth: 200, backgroundColor: "#007ec5" }}>
-
+        <Card sx=
+            {{ 
+                width: 300,
+                backgroundColor: "#007ec5" ,
+                borderRadius: 5,
+                marginBottom: 6
+             }} className="card">
 
             <CardMedia
                 component="img"
@@ -35,6 +41,6 @@ export default function ReviewCard(cardInfo: any) {
             </CardContent>
 
 
-        </Box>
+        </Card>
     );
 }
