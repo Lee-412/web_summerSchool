@@ -24,6 +24,7 @@ const NewsItem = (props: IProps) => {
         <Container sx={{
             marginLeft: "3%",
             display: "flex",
+            flexDirection: "row",
             width: "100%",
             height: "500px",
         }}>

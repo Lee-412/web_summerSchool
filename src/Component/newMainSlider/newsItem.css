@@ -12,7 +12,7 @@
 
 .rightDiv {
     width: "50%";
-    height: "100px";
+    height: "100%";
     display: flex;
     align-content: center !important;
     align-items: center !important;
