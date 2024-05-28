@@ -1,7 +1,9 @@
+import { json } from "stream/consumers";
+
 const postLearnerData = async(formData: object) => {
     console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`);
     
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
+    let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
       
     // Adding method type 
         method: "POST", 
@@ -15,15 +17,11 @@ const postLearnerData = async(formData: object) => {
         headers: { 
             "Content-type": "application/json; charset=UTF-8",
         },
-    }).then((res)=>{
-        console.log(res);
-        console.log(res.status);
-        
-        
-    }).catch((e)=>{
-        console.log(e);
-        
-    }) 
+    })
+    if(res.status !== 200) {
+        let error = await res.json()
+        return (error.error.details.errors)
+    }
     
 } 
 

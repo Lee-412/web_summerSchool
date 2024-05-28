@@ -4,6 +4,11 @@ import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
 import postLearnerData, { postFileData } from '@/Component/formModalRegister/postData';
 import {data} from '@/Component/formModalRegister/postData';
+import { FortTwoTone } from '@mui/icons-material';
+import validateRegisterData from '@/Component/formModalRegister/validateData';
+import CustomizedSnackbars from '@/Component/customizeSnackedBar/SnackedBar';
+import { message } from 'antd';
+import SuccessBar from '@/Component/customizeSnackedBar/SuccesBar';
 const genders = [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
@@ -22,6 +27,9 @@ console.log(process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL);
 
 const StudentFormModal = (props: any) => {
     const { open, setOpen } = props;
+    const [ open_bar, setOpenBar ] = React.useState(false);
+    const [open_success, setOpenSuccess] = useState(false);
+    const [errs, setErrs] = useState(new Array)
     const [formData, setFormData] = useState({
         identityCode: '',
         birthday: '',
@@ -33,7 +41,7 @@ const StudentFormModal = (props: any) => {
         address: '',
         phone: '',
         courses: '',
-        avatar: new File([""], "filename"),
+       // avatar: new File([""], "filename"),
         purpose: '',
     });
 
@@ -46,13 +54,12 @@ const StudentFormModal = (props: any) => {
     };
 
     const handleAvatarChange = (e: any) => {
-        setFormData({
-            ...formData,
-            avatar: e.target.files[0],
-        });
+        // setFormData({
+        //     ...formData,
+        //     avatar: e.target.files[0],
+        // });
     };
-
-    const handleSubmit = (e: any) => {
+    const handleSubmit = async(e: any) => {
         e.preventDefault();
         console.log(formData);
         let dataToServer = {
@@ -66,19 +73,25 @@ const StudentFormModal = (props: any) => {
                 Address: formData.address,
                 Purpose: formData.purpose,
                 classification: formData.role,
-                files: {
-                    avatar: formData.avatar
-                }
+                // files: {
+                //     avatar: formData.avatar
+                // }
             
         }
-        console.log(formData.avatar);
+       // console.log(formData.avatar);
         console.log(dataToServer);
         let formdata = new FormData()
         formdata.append('data', JSON.stringify(dataToServer))
         console.log(formData);
-        postLearnerData(dataToServer);
-        let filedata = new FormData()
-        setOpen(false);
+        let err = await postLearnerData(dataToServer);
+        console.log(err);
+        if(err !== undefined) {
+            let err_arr_feed = validateRegisterData(err)
+            setErrs(err_arr_feed)
+            setOpenBar(true)
+        }
+        setOpenSuccess(true)
+        setOpen(true);
         setFormData({
             identityCode: '',
             birthday: '',
@@ -90,28 +103,30 @@ const StudentFormModal = (props: any) => {
             address: '',
             phone: '',
             courses: '',
-            avatar: new File([""], "filename"),
+           // avatar: new File([""], "filename"),
             purpose: '',
         })
     };
+    
 
     const handleCancel = () => {
         setOpen(false)
     }
     return (
+    <>
         <Dialog open={open} onClose={props.onClose} maxWidth="md" fullWidth>
             <DialogTitle>Register new students</DialogTitle>
             <DialogContent>
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={3}>
-                        <Grid item xs={12} sx={{ display: "flex" }}>
+                        {/* <Grid item xs={12} sx={{ display: "flex" }}>
                             <Button variant="contained" component="label">
                                 Upload Avatar
                                 <input type="file" hidden onChange={handleAvatarChange} />
                             </Button>
                             <Box sx={{ width: "3%" }}></Box>
                             {formData.avatar && <Avatar src={URL.createObjectURL(formData.avatar)} alt="avatar" />}
-                        </Grid>
+                        </Grid> */}
                         <Grid item xs={12}>
 
                             <Stack spacing={2} direction="row" sx={{ mb: 0 }}>
@@ -253,7 +268,33 @@ const StudentFormModal = (props: any) => {
                     Submit
                 </Button>
             </DialogActions>
+            {
+            //    <div>{errs.length}</div>
+            //     for(var i = 0; i < errs.length; i++){
+            //         return <></>
+            //     }
+                
+                // errs.map((e:any,  index)=>{
+                //     console.log(e.message, e.field);
+                //     return <></>
+                //     setOpenBar(true)
+                //     return <CustomizedSnackbars key={index}
+                //     message={e.message}
+                //     field = {e.field}
+                //     open={open_bar}
+                //     setOpen={setOpenBar}/>
+                // })
+                
+            }
+            <CustomizedSnackbars
+                    errs = {errs}
+                    open={open_bar}
+                    setOpen={setOpenBar}/>
+            <SuccessBar 
+                open={open_success}
+                setOpen={setOpenSuccess}/>
         </Dialog>
+    </>                                
     );
 };
 

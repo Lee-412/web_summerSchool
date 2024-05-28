@@ -7,7 +7,7 @@ import { Category } from "@mui/icons-material";
 import { log } from "console";
 
 const NewsPgae = async () => {
-    const res = await fetch(`${process.env.STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
+    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
     const news = await res.json()
     console.log(news);
 
