@@ -43,7 +43,7 @@ const HomeCourses =  (props:ICdata) => {
         }
     }
 
-    console.log(props.data);
+   // console.log(props.data);
     
     return (
         <Box

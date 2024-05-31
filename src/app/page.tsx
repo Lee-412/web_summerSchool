@@ -30,7 +30,6 @@ export default async function HomePage() {
 
       <HeaderApp />
       <AboutAdvertise />
-      {/* <HomeCourses /> */}
       <UpcomingCourses/>
       <Feature/>
       <FooterApp />

@@ -2,13 +2,11 @@
 
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
-import postLearnerData, { postFileData } from '@/Component/formModalRegister/postData';
-import {data} from '@/Component/formModalRegister/postData';
-import { FortTwoTone } from '@mui/icons-material';
-import validateRegisterData from '@/Component/formModalRegister/validateData';
+import postLearnerData, { postFileData, updateRelationtoCourse } from '@/Component/formModalRegister/postData';
 import CustomizedSnackbars from '@/Component/customizeSnackedBar/SnackedBar';
-import { message } from 'antd';
 import SuccessBar from '@/Component/customizeSnackedBar/SuccesBar';
+import validateRegisterDataErrs from '@/Component/formModalRegister/validateData';
+import findStudentId from '@/Component/formModalRegister/findStudent';
 const genders = [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
@@ -86,11 +84,18 @@ const StudentFormModal = (props: any) => {
         let err = await postLearnerData(dataToServer);
         console.log(err);
         if(err !== undefined) {
-            let err_arr_feed = validateRegisterData(err)
+            let err_arr_feed = validateRegisterDataErrs(err)
             setErrs(err_arr_feed)
             setOpenBar(true)
+        } else{
+            setOpenSuccess(true)
+            let id:any = await findStudentId(dataToServer.IdentityCode)
+            console.log(id);
+            
+            let patch_err = await updateRelationtoCourse(id)
+            console.log(patch_err)
         }
-        setOpenSuccess(true)
+        
         setOpen(true);
         setFormData({
             identityCode: '',
@@ -244,8 +249,6 @@ const StudentFormModal = (props: any) => {
 
                         </Grid>
 
-
-                        {/* Đoạn courses này thì t nghĩ là vẫn phải ném data r hard vào để sinh viên chọn */}
                         <Grid item xs={12}>
                             <TextField
                                 name="purpose"
