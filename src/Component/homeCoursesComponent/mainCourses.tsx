@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, IconButton } from "@mui/material";
+import { Box, Container, Dialog, IconButton } from "@mui/material";
 import SearchBase from "../searchBase/search";
 import ReviewCard from "../cardBase/card";
 import InputBase from '@mui/material/InputBase';
@@ -48,7 +48,6 @@ const HomeCourses = (props: ICdata) => {
 
     return (
         <Box
-
             sx={{
                 backgroundColor: "#007ec5",
                 margin: 0,
@@ -61,11 +60,12 @@ const HomeCourses = (props: ICdata) => {
                 alignItems: "center",
                 paddingBottom: "5%"
             }}>
-            {/* <p style={{ height: "30px" }}></p> */}
 
-            <Box
+            <Container
                 sx={{
-                    p: '2px 4px', display: 'flex', width: 800,
+                    p: '2% 4%',
+                    display: 'flex',
+                    width: "20%",
                     backgroundColor: '#FFFFFF',
                     borderRadius: "30px",
                     justifyContent: " center"
@@ -80,7 +80,7 @@ const HomeCourses = (props: ICdata) => {
                     inputProps={{ 'aria-label': 'search for what to learn' }}
                     onChange={handdleInput}
                 />
-            </Box>
+            </Container>
 
 
             <Box sx={{

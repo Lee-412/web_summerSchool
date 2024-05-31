@@ -7,6 +7,14 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import NewsItem from './newsItem';
 
+interface dataSldier {
+    id: number,
+    author: string,
+    content: string,
+    category: string,
+    img: string,
+    title: string,
+}
 const ImageSlider = (props: any) => {
 
     console.log(props);
@@ -15,7 +23,9 @@ const ImageSlider = (props: any) => {
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) =>
+            // (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
             (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
+
     };
 
     const handleNext = () => {
@@ -30,30 +40,73 @@ const ImageSlider = (props: any) => {
             flexDirection: "column"
 
         }}>
+            {props != "" ?
+                <>
+                    <Box>
+                        {
 
-            <Box>
+                            props.sliderData.map((data: dataSldier,
+                                //     {
+                                //     // id: number; title: string; category: string; img: string; author: string;
+                                // },
+                                index: number) => {
+                                return (
+                                    <div
+                                        key={data.id}
+                                        style={{
+                                            display: index === currentIndex ? 'block' : 'none'
+                                        }}>
+
+                                        <NewsItem
+                                            author={data.author}
+                                            title={data.title}
+                                            category={data.category}
+                                            img={data.img}
+                                            content={data.content} />
+                                    </div>
+                                )
+                            })
+                        }
+                    </Box>
+                </> :
+                <>
+                    <Box>
+
+                        <NewsItem
+                            author={"No entry data"}
+                            title={"No entry data"}
+                            category={"No entry data"}
+                            img={""}
+                            content={"no entry "} />
+
+                    </Box>
+                </>
+
+            }
+            {/* <Box>
                 {
-                    props.sliderData.map((data: {
-                        id: number; title: string; category: string; img: string; author: string;
-                    },
-                        index: number) => {
-                        return (
-                            <div
-                                key={data.id}
-                                style={{
-                                    display: index === currentIndex ? 'block' : 'none'
-                                }}>
 
-                                <NewsItem
-                                    author={data.author}
-                                    title={data.title}
-                                    category={data.category}
-                                    img={data.img} />
-                            </div>
-                        )
-                    })
+                    // props.sliderData.map((data: {
+                    //     id: number; title: string; category: string; img: string; author: string;
+                    // },
+                    //     index: number) => {
+                    //     return (
+                    //         <div
+                    //             key={data.id}
+                    //             style={{
+                    //                 display: index === currentIndex ? 'block' : 'none'
+                    //             }}>
+
+                    //             <NewsItem
+                    //                 author={data.author}
+                    //                 title={data.title}
+                    //                 category={data.category}
+                    //                 img={data.img} />
+                    //         </div>
+                    //     )
+                    // })
                 }
-            </Box>
+            </Box> */}
 
             <Box sx={{
                 display: "flex",
