@@ -3,7 +3,7 @@ interface IErr {
     message: string
 }
 
-const validateRegisterData = (errs: Array<object>) => {
+const validateRegisterDataErrs = (errs: Array<object>) => {
     
     let err_arr: object[] = []
     errs.map((err:any)=>{
@@ -19,4 +19,4 @@ const validateRegisterData = (errs: Array<object>) => {
     return err_arr
 }
 
-export default validateRegisterData
+export default validateRegisterDataErrs

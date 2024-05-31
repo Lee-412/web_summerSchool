@@ -1,19 +1,16 @@
-import { json } from "stream/consumers";
+
 
 const postLearnerData = async(formData: object) => {
     console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`);
-    
+    //updateRelationtoCourse()
     let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
       
-    // Adding method type 
         method: "POST", 
         
-        // Adding body or contents to send 
         body: JSON.stringify({ 
             "data" : formData
         }), 
         
-        // Adding headers to the request 
         headers: { 
             "Content-type": "application/json; charset=UTF-8",
         },
@@ -25,12 +22,53 @@ const postLearnerData = async(formData: object) => {
     
 } 
 
+export const updateRelationtoCourse = async(student_id:number)=>{
+    let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, {cache: "no-store"})
+    let courses = await res.json()
+    //console.log(courses);
+    let available_courses = courses.data.filter((course:any)=>{
+            return course.attributes.available
+    })
+    console.log(available_courses);
+    const id_update = available_courses[0].id
+    const maximum_size = parseInt(available_courses[0].attributes.Size) 
+    let current_student = []
+    if(available_courses[0].students !== undefined) {
+         current_student = available_courses[0].students.data
+    }
+    console.log('check_come_to_this');
+    
+    let current_students_id = []
+    for(let i = 0; i < current_student.length; i++) {
+        current_students_id.push(current_student[i].id)
+    }
+    const data_update:object = {
+        method: 'PUT',
+        body: JSON.stringify({
+            data: {
+                students: {
+                        connect: [...current_students_id,student_id]
+                }
+            }
+        }),
+        headers: {
+            "Content-Type": "application/json" // Ensure headers are set
+        }
+    }
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses/${id_update}`, data_update)
+    if (response.status !== 200) {
+        let error = await response.json()
+        return error
+    }
+}
+
 export const postFileData = async (file:any) => {
     fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}/upload`, file)
 }
 
 
-export const data = {
+export const example_data = {
             "name": "vang",
             "Birthday": "2024-05-07",
             "IdentityCode": "038304001173",
@@ -48,12 +86,3 @@ export const data = {
 export default postLearnerData;
 
 
-
-
-
-
-
-//  token: 8def6f5c8063626149160dc48a651c1828eb2d01ec07af3cfc161f6632dcdda29
-// 5c1690d207d400be7fb5ae651b4b1d63590c655b665c48f00497bb529f1c4cf485b148757e9
-// 0abf9034f834709eef7bc68df4894010f372c969a22d840cdd748bf2ad2fa820e99204ccde8
-// 6af92e754cc02c4f54e60839bf26a83bd624c7ee9
