@@ -1,26 +1,50 @@
-import { Box, Container } from "@mui/material";
+"use client"
+
+import { Box, IconButton } from "@mui/material";
 import SearchBase from "../searchBase/search";
 import ReviewCard from "../cardBase/card";
-import { log } from "console";
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import { useState } from "react";
 
-const HomeCourses = async () => {
+interface ICdata {
+    data: Array<object>
+}
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
-    const courses = await res.json()
 
-    let cards: any[] = []
-    courses.data.map((course: any) => {
-
-        let img_url = `${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}${course.attributes.Thumbnail.data.attributes.url}`
-        let title = `${course.attributes.name}`
-        let card_info =
-        {
-            img: img_url,
-            title: title,
+const HomeCourses = (props: ICdata) => {
+    let initialData: Array<object> = []
+    let size = props.data.length
+    if (props.data.length >= 6) {
+        for (let i = size - 1; i >= size - 6; i--) {
+            initialData.push(props.data[i])
         }
-        cards.push(card_info)
-    })
-    //console.log(cards);
+    } else {
+        initialData = props.data
+    }
+
+
+
+    const [input, setInput] = useState('');
+    const [courses_render, setCoursesRender] = useState(initialData)
+
+    function handdleInput(e: any) {
+        let content = e.target.value
+        console.log(e.target.value)
+        let course_check: Array<object> = []
+        props.data.map((course: any) => {
+            if (course.title.toLowerCase().includes(content.toLowerCase())) {
+                course_check.push(course)
+            }
+        })
+        if (content === "") {
+            setCoursesRender(initialData)
+        } else {
+            setCoursesRender(course_check)
+        }
+    }
+
+    console.log(props.data);
 
     return (
         <Box
@@ -38,7 +62,27 @@ const HomeCourses = async () => {
                 paddingBottom: "5%"
             }}>
             {/* <p style={{ height: "30px" }}></p> */}
-            <SearchBase color={"#FFFFFF"} />
+
+            <Box
+                sx={{
+                    p: '2px 4px', display: 'flex', width: 800,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: "30px",
+                    justifyContent: " center"
+                }}
+            >
+                <IconButton type="button" sx={{ p: '10px', color: "#208ecc " }} aria-label="search">
+                    <SearchIcon />
+                </IconButton>
+                <InputBase className='input-courses'
+                    sx={{ ml: 1, flex: 1, color: "#63b0db" }}
+                    placeholder="Search for what to learn"
+                    inputProps={{ 'aria-label': 'search for what to learn' }}
+                    onChange={handdleInput}
+                />
+            </Box>
+
+
             <Box sx={{
                 width: "80%",
                 marginTop: "50px",
@@ -48,10 +92,9 @@ const HomeCourses = async () => {
                 paddingBottom: "5%"
             }}>
                 {
-                    cards.map((card: any) => {
+                    courses_render.map((card: any) => {
                         return (
                             <ReviewCard card_info={card} />
-
                         )
                     })
                 }

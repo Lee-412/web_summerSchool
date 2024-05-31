@@ -1,5 +1,9 @@
+import { json } from "stream/consumers";
+
 const postLearnerData = async(formData: object) => {
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
+    console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`);
+    
+    let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
       
     // Adding method type 
         method: "POST", 
@@ -12,11 +16,19 @@ const postLearnerData = async(formData: object) => {
         // Adding headers to the request 
         headers: { 
             "Content-type": "application/json; charset=UTF-8",
-            'Authorization': 'Bearer 8def6f5c8063626149160dc48a651c1828eb2d01ec07af3cfc161f6632dcdda295c1690d207d400be7fb5ae651b4b1d63590c655b665c48f00497bb529f1c4cf485b148757e90abf9034f834709eef7bc68df4894010f372c969a22d840cdd748bf2ad2fa820e99204ccde86af92e754cc02c4f54e60839bf26a83bd624c7ee9'
         },
-    }) 
+    })
+    if(res.status !== 200) {
+        let error = await res.json()
+        return (error.error.details.errors)
+    }
     
 } 
+
+export const postFileData = async (file:any) => {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}/upload`, file)
+}
+
 
 export const data = {
             "name": "vang",
