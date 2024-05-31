@@ -5,18 +5,18 @@ import logo3 from "../../../public/4_46.png"
 const cards: any[] = [
     {
         img: logo1.src,
-        title: "The first card",
-        content: "Chẳng biết cách nuông chiều, chẳng làm sao để hiểu tính cách em nhiều, để được e yêu anh thiếu quá nhiều"
+        title: "Relaxing and Learning",
+        content: "Resources and tools that help students relax and reduce stress, while enhancing learning."
     },
     {
         img: logo2.src,
-        title: "The second card",
-        content: "Chẳng biết cách nuông chiều, chẳng làm sao để hiểu tính cách em nhiều, để được e yêu anh thiếu quá nhiều"
+        title: "Certificates",
+        content: "Section highlighting various academic and professional certificates and their requirements and benefits."
     },
     {
         img: logo3.src,
-        title: "The third card",
-        content: "Chẳng biết cách nuông chiều, chẳng làm sao để hiểu tính cách em nhiều, để được e yêu anh thiếu quá nhiều"
+        title: "Creative Thinking",
+        content: "Information on courses, programs, and resources for students to develop their creative skills."
     }
 ]
 

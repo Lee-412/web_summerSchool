@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, IconButton } from "@mui/material";
+import { Box, Dialog, IconButton } from "@mui/material";
 import SearchBase from "../searchBase/search";
 import ReviewCard from "../cardBase/card";
 import InputBase from '@mui/material/InputBase';
@@ -65,7 +65,7 @@ const HomeCourses = (props: ICdata) => {
 
             <Box
                 sx={{
-                    p: '2px 4px', display: 'flex', width: 800,
+                    p: '0.25% 2%', display: 'flex', width: 800,
                     backgroundColor: '#FFFFFF',
                     borderRadius: "30px",
                     justifyContent: " center"
