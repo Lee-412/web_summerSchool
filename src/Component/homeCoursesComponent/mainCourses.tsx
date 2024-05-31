@@ -11,32 +11,33 @@ interface ICdata {
     data: Array<object>
 }
 
-const HomeCourses =  (props:ICdata) => {
+
+const HomeCourses = (props: ICdata) => {
     let initialData: Array<object> = []
     let size = props.data.length
-    if(props.data.length >= 6) {
-        for(let i = size - 1; i >= size - 6; i--){
+    if (props.data.length >= 6) {
+        for (let i = size - 1; i >= size - 6; i--) {
             initialData.push(props.data[i])
         }
     } else {
         initialData = props.data
     }
-   
+
 
 
     const [input, setInput] = useState('');
     const [courses_render, setCoursesRender] = useState(initialData)
-    
-    function handdleInput(e:any) {
+
+    function handdleInput(e: any) {
         let content = e.target.value
         console.log(e.target.value)
-        let course_check:Array<object> = []
-        props.data.map((course:any) => {
-            if(course.title.toLowerCase().includes(content.toLowerCase())){
+        let course_check: Array<object> = []
+        props.data.map((course: any) => {
+            if (course.title.toLowerCase().includes(content.toLowerCase())) {
                 course_check.push(course)
             }
         })
-        if(content === ""){
+        if (content === "") {
             setCoursesRender(initialData)
         } else {
             setCoursesRender(course_check)
@@ -61,25 +62,25 @@ const HomeCourses =  (props:ICdata) => {
                 paddingBottom: "5%"
             }}>
             {/* <p style={{ height: "30px" }}></p> */}
-            
+
             <Box
-            sx={{
-                p: '2px 4px', display: 'flex', width: 800,
-                backgroundColor: '#FFFFFF',
-                borderRadius: "30px",
-                justifyContent: " center"
-            }}
-        >
-            <IconButton type="button" sx={{ p: '10px', color: "#208ecc " }} aria-label="search">
-                <SearchIcon />
-            </IconButton>
-            <InputBase className='input-courses'
-                sx={{ ml: 1, flex: 1, color: "#63b0db" }}
-                placeholder="Search for what to learn"
-                inputProps={{ 'aria-label': 'search for what to learn' }}
-                onChange={handdleInput}
-            />
-        </Box>
+                sx={{
+                    p: '2px 4px', display: 'flex', width: 800,
+                    backgroundColor: '#FFFFFF',
+                    borderRadius: "30px",
+                    justifyContent: " center"
+                }}
+            >
+                <IconButton type="button" sx={{ p: '10px', color: "#208ecc " }} aria-label="search">
+                    <SearchIcon />
+                </IconButton>
+                <InputBase className='input-courses'
+                    sx={{ ml: 1, flex: 1, color: "#63b0db" }}
+                    placeholder="Search for what to learn"
+                    inputProps={{ 'aria-label': 'search for what to learn' }}
+                    onChange={handdleInput}
+                />
+            </Box>
 
 
             <Box sx={{

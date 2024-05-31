@@ -16,7 +16,6 @@ const CoursesPage = () => {
                     alignContent: "center",
                     alignItems: "center"
                 }}>
-                {/* <p style={{ height: "30px" }}></p> */}
                 <SearchBase color={"#FFFFFF"} />
             </Box>
         </>

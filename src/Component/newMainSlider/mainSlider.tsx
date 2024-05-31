@@ -34,7 +34,7 @@ const ImageSlider = (props: any) => {
             <Box>
                 {
                     props.sliderData.map((data: {
-                        id: number; title: string; category: string; img: string;
+                        id: number; title: string; category: string; img: string; author: string;
                     },
                         index: number) => {
                         return (
@@ -45,7 +45,7 @@ const ImageSlider = (props: any) => {
                                 }}>
 
                                 <NewsItem
-
+                                    author={data.author}
                                     title={data.title}
                                     category={data.category}
                                     img={data.img} />
