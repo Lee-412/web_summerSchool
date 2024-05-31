@@ -1,66 +1,79 @@
 'use client'
 
-import { Button, Container } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
 import './newsItem.css'
 import TagNumber from "../tagNumber/tagnumber";
+import { use, useState } from "react";
+import ModalLearnMore from "./modal_learn_more";
 interface IProps {
     title: string,
     img: string,
     category: string,
+    author: string
 }
 
 const NewsItem = (props: IProps) => {
 
+    const [modal_learnMore, setModalLearnMore] = useState(false)
     const router = useRouter()
 
     const handleClickLearnMore = () => {
-        router.push('/');
+        setModalLearnMore(true)
     }
     console.log(`${process.env.STRAPI_LINK_URL}${props.img}`);
     console.log(props.category);
 
     return (
-        <Container sx={{
-            marginLeft: "3%",
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            height: "500px",
-        }}>
+        <>
+            <Container sx={{
+                marginLeft: "3%",
+                display: "flex",
+                height: "500px",
+            }}>
 
-            <div className="lefDiv" >
+                <div className="left_news" >
 
-                <span className="title">
-                    {props.title}
-                </span>
-                <span >
-                    {props.category}
-                </span>
+                    <span className="title_news">
+                        {props.title}
+                    </span>
+                    <span className="author">
+                        {props.author}
+                    </span>
+                    <div>
 
-                <Button
-                    onClick={handleClickLearnMore}
-                    variant="outlined"
-                    className="btnLeanrMore"
-                >
-                    Learn More
-                </Button>
+                        <Button
+                            onClick={handleClickLearnMore}
+                            variant="outlined"
+                            className="leanr_more"
+                        >
+                            Learn More
+                        </Button>
+                    </div>
 
-            </div>
-            <div className="rightDiv">
-                <img src={`http://127.0.0.1:1337${props.img}`} alt="" style={{
-                    width: "90%",
-                    height: "100%",
-                    objectFit: 'cover',
-                    borderRadius: "50px",
+                </div>
 
-                }} />
+                <div className="right_news">
+                    <img src={`http://127.0.0.1:1337${props.img}`} alt="" style={{
+                        width: "90%",
+                        height: "100%",
+                        objectFit: 'cover',
+                        borderRadius: "50px",
 
-
-            </div>
-        </Container>
+                    }} />
 
 
+                </div>
+
+            </Container>
+            <ModalLearnMore
+                img={props.img}
+                title={props.title}
+                content={props.category}
+                openModal={modal_learnMore}
+                setOpenModal={setModalLearnMore}
+            />
+        </>
     )
 }
 export default NewsItem;

@@ -10,6 +10,9 @@ interface data {
 
 export default function SearchBase(prop: data) {
 
+    const handleOnchange = (e: any) => {
+        alert(e.target.value)
+    }
     return (
 
         <Box
@@ -25,6 +28,7 @@ export default function SearchBase(prop: data) {
             </IconButton>
             <InputBase
                 sx={{ ml: 1, flex: 1, color: "#63b0db" }}
+                onChange={(e) => { handleOnchange(e) }}
                 placeholder="Search for what to learn"
                 inputProps={{ 'aria-label': 'search for what to learn' }}
             />

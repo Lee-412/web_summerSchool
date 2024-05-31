@@ -2,21 +2,23 @@
 
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
-
+import postLearnerData from '@/Component/formModalRegister/postData';
+import {data} from '@/Component/formModalRegister/postData';
 const genders = [
     { value: 'male', label: 'Male' },
     { value: 'female', label: 'Female' },
     { value: 'other', label: 'Other' },
 ];
 const roles = [
-    { value: 'Student', label: 'Student' },
-    { value: 'Worker', label: 'Worker' },
-    { value: 'other', label: 'Other' },
+    { value: 'Sinh viên', label: 'Student' },
+    { value: 'Người đi làm', label: 'Worker' },
+    { value: 'Khác', label: 'Other' },
 ];
 // interface data {
 //     open: boolean,
 //     onClose: void
 // }
+console.log(process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL);
 
 const StudentFormModal = (props: any) => {
     const { open, setOpen } = props;
@@ -53,6 +55,23 @@ const StudentFormModal = (props: any) => {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log(formData);
+        let dataToServer = {
+            name: formData.name,
+            Birthday: formData.birthday,
+            IdentityCode: formData.identityCode,
+            MSV: formData.msv,
+            email: formData.email,
+            phone: formData.phone,
+            gender: formData.gender,
+            Address: formData.address,
+            Purpose: formData.purpose,
+            classification: formData.role,
+            avtar: formData.avatar
+        }
+        console.log(formData.avatar);
+        console.log(dataToServer);
+        
+        postLearnerData(dataToServer);
         setOpen(false);
         setFormData({
             identityCode: '',
@@ -206,15 +225,6 @@ const StudentFormModal = (props: any) => {
 
 
                         {/* Đoạn courses này thì t nghĩ là vẫn phải ném data r hard vào để sinh viên chọn */}
-                        <Grid item xs={12}>
-                            <TextField
-                                name="courses"
-                                label="Courses"
-                                fullWidth
-                                value={formData.courses}
-                                onChange={handleChange}
-                            />
-                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 name="purpose"
