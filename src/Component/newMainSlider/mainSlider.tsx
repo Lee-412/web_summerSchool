@@ -46,9 +46,7 @@ const ImageSlider = (props: any) => {
                         {
 
                             props.sliderData.map((data: dataSldier,
-                                //     {
-                                //     // id: number; title: string; category: string; img: string; author: string;
-                                // },
+
                                 index: number) => {
                                 return (
                                     <div

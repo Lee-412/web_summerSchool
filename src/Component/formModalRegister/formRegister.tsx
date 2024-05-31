@@ -82,9 +82,10 @@ const StudentFormModal = (props: any) => {
 
         if (err !== undefined) {
             let err_arr_feed = validateRegisterDataErrs(err)
-
             setErrs(err_arr_feed)
             setOpenBar(true)
+
+
         } else {
             setOpenSuccess(true)
             let id: any = await findStudentId(dataToServer.IdentityCode)
@@ -92,22 +93,24 @@ const StudentFormModal = (props: any) => {
 
             let patch_err = await updateRelationtoCourse(id)
             console.log(patch_err)
+
+            setOpen(false);
+            setFormData({
+                identityCode: '',
+                birthday: '',
+                name: '',
+                gender: '',
+                role: '',
+                msv: '',
+                email: '',
+                address: '',
+                phone: '',
+                courses: '',
+                purpose: '',
+            })
         }
 
-        setOpen(true);
-        setFormData({
-            identityCode: '',
-            birthday: '',
-            name: '',
-            gender: '',
-            role: '',
-            msv: '',
-            email: '',
-            address: '',
-            phone: '',
-            courses: '',
-            purpose: '',
-        })
+
     };
 
 
@@ -263,24 +266,7 @@ const StudentFormModal = (props: any) => {
                 </DialogActions>
 
 
-                {
-                    //    <div>{errs.length}</div>
-                    //     for(var i = 0; i < errs.length; i++){
-                    //         return <></>
-                    //     }
 
-                    // errs.map((e:any,  index)=>{
-                    //     console.log(e.message, e.field);
-                    //     return <></>
-                    //     setOpenBar(true)
-                    //     return <CustomizedSnackbars key={index}
-                    //     message={e.message}
-                    //     field = {e.field}
-                    //     open={open_bar}
-                    //     setOpen={setOpenBar}/>
-                    // })
-
-                }
                 <CustomizedSnackbars
                     errs={errs}
                     open={open_bar}

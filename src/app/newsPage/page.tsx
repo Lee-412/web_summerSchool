@@ -2,19 +2,21 @@ import FooterApp from "@/Component/footerApp/footer";
 import MainSlider from "@/Component/newMainSlider/mainSlider";
 import HeaderApp from "@/Component/headerApp/header";
 import { Box } from "@mui/material";
+import DisplayContent from "@/Component/newMainSlider/format_data";
 
 
 const NewsPgae = async () => {
+
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
     const news = await res.json()
     console.log(news);
 
-    const res1 = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students?populate=*`, { cache: "no-store" })
-    const news1 = await res1.json()
-    console.log(news1);
-
     const slider: any[] = []
+
+
     news.data.map((new1: any) => {
+
         const img_url = new1.attributes.media.data[0].attributes.url;
         const _id = new1.id
         const title = new1.attributes.title
@@ -45,6 +47,9 @@ const NewsPgae = async () => {
             <HeaderApp />
             <MainSlider
                 sliderData={slider}
+            />
+            <DisplayContent
+            // props={news}
             />
             <FooterApp />
         </Box>

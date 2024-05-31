@@ -1,6 +1,6 @@
 "use client"
 
-import { Box, Dialog, IconButton } from "@mui/material";
+import { Box, Container, Dialog, IconButton } from "@mui/material";
 import SearchBase from "../searchBase/search";
 import ReviewCard from "../cardBase/card";
 import InputBase from '@mui/material/InputBase';
@@ -61,7 +61,7 @@ const HomeCourses = (props: ICdata) => {
                 paddingBottom: "5%"
             }}>
 
-            <Container
+            <Box
                 sx={{
 
                     p: '0.25% 2%', display: 'flex', width: 800,
@@ -79,7 +79,7 @@ const HomeCourses = (props: ICdata) => {
                     inputProps={{ 'aria-label': 'search for what to learn' }}
                     onChange={handdleInput}
                 />
-            </Container>
+            </Box>
 
 
             <Box sx={{
