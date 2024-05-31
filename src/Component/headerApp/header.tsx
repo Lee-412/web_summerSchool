@@ -147,14 +147,14 @@ export default function AppHeader() {
                     }}>
 
                         <>
-                            <Link href={"/"}
+                            <Link href={"/"} className="btn"
                             >
                                 Trang chủ
                             </Link>
-                            <Link href={"/newsPage"}>
+                            <Link href={"/newsPage"} className="btn">
                                 Tin tức
                             </Link>
-                            <Link href={""}>
+                            <Link href={""} className="btn">
                                 Hỏi đáp
                             </Link>
 

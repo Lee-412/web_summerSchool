@@ -8,6 +8,10 @@ interface data {
     color: string
 }
 
+function handdleInput(e:any) {
+    console.log(e.target.value)
+}
+
 export default function SearchBase(prop: data) {
 
     return (
@@ -23,10 +27,11 @@ export default function SearchBase(prop: data) {
             <IconButton type="button" sx={{ p: '10px', color: "#208ecc " }} aria-label="search">
                 <SearchIcon />
             </IconButton>
-            <InputBase
+            <InputBase className='input-courses'
                 sx={{ ml: 1, flex: 1, color: "#63b0db" }}
                 placeholder="Search for what to learn"
                 inputProps={{ 'aria-label': 'search for what to learn' }}
+                onChange={handdleInput}
             />
         </Box>
     );

@@ -1,3 +1,4 @@
+import UpcomingCourses from "@/Component/UpcomingCourses/UpcomingCourses";
 import Feature from "@/Component/featuresView/feature";
 import FooterApp from "@/Component/footerApp/footer";
 import HeaderApp from "@/Component/headerApp/header";
@@ -29,7 +30,8 @@ export default async function HomePage() {
 
       <HeaderApp />
       <AboutAdvertise />
-      <HomeCourses />
+      {/* <HomeCourses /> */}
+      <UpcomingCourses/>
       <Feature/>
       <FooterApp />
     </Box>
