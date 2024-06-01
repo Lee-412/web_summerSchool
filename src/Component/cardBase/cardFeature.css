@@ -1,6 +1,6 @@
 @media screen and(min-width: 0px) and (max-width: 389px) {
     .card-container {
-        max-width: 32vw ;
+        max-width: 32vw;
         width: 32vw;
     }
 }
@@ -11,6 +11,7 @@
     color: #007EC5;
     margin-left: 6%;
 }
+
 .feature h3 {
     font-family: Arial, Helvetica, sans-serif;
     color: #007EC5;
@@ -36,15 +37,18 @@
     border: 0.5px solid #007EC5;
     border-radius: 5%;
 }
-.card-container:hover{
+
+.card-container:hover {
     cursor: pointer;
     background-color: rgba(180, 180, 180, 0.2);
 }
+
 .card-container img {
     padding-left: 10%;
     padding-top: 5%;
     width: 20%;
 }
+
 .card-container p {
     max-width: 60%;
     text-align: left;

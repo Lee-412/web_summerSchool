@@ -6,6 +6,8 @@ import { Button } from 'antd';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import NewsItem from './newsItem';
+import css from 'styled-jsx/css';
+import Column from 'antd/es/table/Column';
 
 export interface dataSldier {
     id: number,
@@ -40,13 +42,18 @@ const ImageSlider = (props: any) => {
     };
 
     return (
-        <Box sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-            flexDirection: "column"
+        <Box
+            // className='test'
+            // flexDirection={{xs:""}}
+            sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignContent: "center",
+                flexDirection: "column"
 
-        }}>
+
+            }
+            }>
             {props != "" ?
                 <>
                     <Box>
