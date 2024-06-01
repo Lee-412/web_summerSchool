@@ -1,0 +1,16 @@
+@media screen and (min-width: 0px) and (max-width: 480px) {
+    .search-bar{
+        max-width: 80vw !important;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 769px) {
+    .search-bar{
+        max-width: 84vw !important;
+    }
+}
+@media screen and (min-width: 770px) and (max-width: 1024px) {
+    .search-bar{
+        max-width: 82vw !important;
+    }
+}
