@@ -6,8 +6,8 @@ import { Button } from 'antd';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import NewsItem from './newsItem';
-import css from 'styled-jsx/css';
-import Column from 'antd/es/table/Column';
+
+import { useRouter } from 'next/navigation';
 
 export interface dataSldier {
     id: number,
@@ -25,14 +25,13 @@ interface dataProps {
 const ImageSlider = (props: any) => {
 
     console.log(props);
-
+    const router = useRouter()
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) =>
             // (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
             (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
-
 
     };
     // console.log(props.data);

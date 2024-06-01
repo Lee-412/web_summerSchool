@@ -1,10 +1,10 @@
 .divContainer {
     background-color: #FFFFFF !important;
     width: '100%';
-    max-height: '900px';
+    max-height: '90vh';
     display: flex !important;
     color: "black";
-    height: 500px;
+    height: 80vh;
 }
 
 .lefDiv {

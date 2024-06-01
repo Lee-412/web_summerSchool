@@ -40,7 +40,7 @@ const AboutAdvertise = () => {
                             variant="contained"
                             className="btnGetStarted"
                         >
-                            Learn More
+                            Đăng ký
                         </Button>
                         <Button
                             onClick={handleClickLearnMore}
@@ -63,7 +63,7 @@ const AboutAdvertise = () => {
                     </div>
                 </div>
                 <div className="rightDiv">
-                    <img src="" alt="" style={{
+                    <img src="http://127.0.0.1:1337/uploads/thumbnail_3_055694c7b4.jfif" alt="" style={{
                         width: "90%",
                         height: "73%",
                         objectFit: 'cover',

@@ -1,7 +1,14 @@
-@media screen and(min-width: 0px) and (max-width: 389px) {
+@media screen and (min-width: 0px) and (max-width: 389px) {
     .card-container {
-        max-width: 32vw;
-        width: 32vw;
+        max-width: 80vw !important;
+        width: 80vw;
+    }
+
+    .feature-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
     }
 }
 

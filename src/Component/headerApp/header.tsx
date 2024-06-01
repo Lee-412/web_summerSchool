@@ -12,15 +12,15 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link'
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Button, } from '@mui/material';
+import { Button } from '@mui/material';
 import './header.css'
 import StudentFormModal from "../formModalRegister/formRegister";
 
 export default function AppHeader() {
 
     const router = useRouter();
-    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-        useState<null | HTMLElement>(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState<null | HTMLElement>(null);
+    const [open, setOpen] = useState(false);
 
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -31,7 +31,6 @@ export default function AppHeader() {
     const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setMobileMoreAnchorEl(event.currentTarget);
     };
-    const [open, setOpen] = useState(false);
 
     const handleOpen = () => {
         setOpen(true);
@@ -41,66 +40,53 @@ export default function AppHeader() {
         setOpen(false);
     };
 
-    const clickResgister = () => {
-        setOpen(true);
-    }
-
     const mobileMenuId = 'primary-search-account-menu-mobile';
 
     const renderMobileMenu = (
-        <>
-
-            {/* <Typography variant="h6" component="h2">
-                h1. Heading
-            </Typography> */}
-            <Menu
-                anchorEl={mobileMoreAnchorEl}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                id={mobileMenuId}
-                keepMounted
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                }}
-                open={isMobileMenuOpen}
-                onClose={handleMobileMenuClose}
-
-            >
-
-                <MenuItem>
-                    <Link href={"/"}
-
-                        style={{
-                            color: 'unset',
-                            textDecoration: 'unset',
-                        }}
-                    >
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+            }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <MenuItem onClick={handleMobileMenuClose}>
+                <Link href="/" passHref>
+                    <Typography variant="inherit" style={{ color: 'unset', textDecoration: 'unset' }}>
                         Trang chủ
-                    </Link>
-                </MenuItem>
-                <MenuItem>
-                    <Link href={"/newsPage"} >
+                    </Typography>
+                </Link>
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose}>
+                <Link href="/newsPage" passHref>
+                    <Typography variant="inherit" style={{ color: 'unset', textDecoration: 'unset' }}>
                         Tin tức
-                    </Link>
-                </MenuItem>
-                <MenuItem>
-                    <Link href={"/"} style={{
-                        color: 'unset',
-                        textDecoration: 'unset',
-                    }}>
+                    </Typography>
+                </Link>
+            </MenuItem>
+            <MenuItem onClick={handleMobileMenuClose}>
+                <Link
+                    href="/" passHref
+                >
+                    <Typography variant="inherit" style={{ color: 'unset', textDecoration: 'none' }}>
                         Hỏi đáp
-                    </Link>
-                </MenuItem>
-                <MenuItem>
-                    <Button>Đăng ký ngay</Button>
-                </MenuItem>
-            </Menu>
-
-
-        </>
+                    </Typography>
+                </Link>
+            </MenuItem>
+            <MenuItem onClick={() => { handleMobileMenuClose(); handleOpen(); }}>
+                <Button variant="outlined" style={{ color: '#007ec5' }}>
+                    Đăng ký ngay
+                </Button>
+            </MenuItem>
+        </Menu>
     );
 
     const handleRedirectHome = () => {
@@ -108,76 +94,34 @@ export default function AppHeader() {
     }
 
     return (
-
-        <Box 
-        sx={{
-            flexGrow: 0,
-        }} >
-            <AppBar position="static"
-                sx={{
-                    backgroundColor: "#007ec5",
-                }}
-                className="nav-bar"
-            >
-
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static" sx={{ backgroundColor: "#007ec5" }} className="nav-bar">
                 <Toolbar>
-
                     <Typography
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{
-                            display: { xs: 'none', sm: 'block' },
-                            cursor: 'pointer',
-                            marginLeft: "3%",
-
-                        }}
-                        onClick={() => handleRedirectHome()}
+                        sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer', marginLeft: "3%" }}
+                        onClick={handleRedirectHome}
                     >
                         Eduverse
                     </Typography>
-
                     <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{
-                        display: {
-                            xs: 'none', md: 'flex'
-                        },
-                        gap: "50px",
-                        alignItems: "center",
-                        cursor: "pointer",
-                        "> a": {
-                            color: 'unset',
-                            textDecoration: 'unset'
-                        }
-                    }}>
-
-                        <>
-                            <Link href={"/"} className="btn"
-                            >
-                                Trang chủ
-                            </Link>
-                            <Link href={"/newsPage"} className="btn">
-                                Tin tức
-                            </Link>
-                            <Link href={""} className="btn">
-                                Hỏi đáp
-                            </Link>
-
-                            <Button variant="outlined"
-                                sx={{
-                                    backgroundColor: "#007ec5",
-                                    color: "white",
-                                    border: "1px solid white"
-
-                                }}
-                                onClick={() => {
-                                    clickResgister()
-                                }}
-                            >
-                                Đăng ký ngay</Button>
-                        </>
-
-
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "50px", alignItems: "center", cursor: "pointer", '> a': { color: 'unset', textDecoration: 'unset' } }}>
+                        <Link href="/" className="btn">Trang chủ</Link>
+                        <Link href="/newsPage" className="btn">Tin tức</Link>
+                        <Link href="/" className="btn">Hỏi đáp</Link>
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                backgroundColor: "#007ec5",
+                                color: "white",
+                                border: "1px solid white"
+                            }}
+                            onClick={handleOpen}
+                        >
+                            Đăng ký ngay
+                        </Button>
                     </Box>
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
@@ -192,20 +136,14 @@ export default function AppHeader() {
                         </IconButton>
                     </Box>
                 </Toolbar>
-                <Box sx={{
-                    backgroundColor: "#015483",
-                }}>
-                    <Typography sx={{
-                        marginLeft: "4.5%"
-                    }}>
+                <Box sx={{ backgroundColor: "#015483" }}>
+                    <Typography sx={{ marginLeft: "4.5%" }}>
                         Join us become an expert! Register now by clicking the button below
                     </Typography>
-
                 </Box>
             </AppBar>
             <StudentFormModal open={open} setOpen={setOpen} />
             {renderMobileMenu}
-        </Box >
+        </Box>
     );
-
 }
