@@ -3,13 +3,8 @@ import InputBase from '@mui/material/InputBase';
 import { Box, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-
 interface data {
     color: string
-}
-
-function handdleInput(e:any) {
-    console.log(e.target.value)
 }
 
 export default function SearchBase(prop: data) {
@@ -35,7 +30,6 @@ export default function SearchBase(prop: data) {
                 onChange={(e) => { handleOnchange(e) }}
                 placeholder="Search for what to learn"
                 inputProps={{ 'aria-label': 'search for what to learn' }}
-                onChange={handdleInput}
             />
         </Box>
     );

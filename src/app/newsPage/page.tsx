@@ -2,19 +2,34 @@ import FooterApp from "@/Component/footerApp/footer";
 import MainSlider from "@/Component/newMainSlider/mainSlider";
 import HeaderApp from "@/Component/headerApp/header";
 import { Box } from "@mui/material";
+import DisplayContent from "@/Component/newMainSlider/format_data";
 
 
 const NewsPgae = async () => {
+
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
     const news = await res.json()
+    console.log(news);
+
     const slider: any[] = []
+
+
     news.data.map((new1: any) => {
+
         const img_url = new1.attributes.media.data[0].attributes.url;
         const _id = new1.id
         const title = new1.attributes.title
         const _category = new1.attributes.category
         const _author = new1.attributes.Author
-        const _content = new1.attributes.content[0].children[0].text
+
+        let _content = ""
+        new1.attributes.content.map((data: any) => {
+            data.children.map((child: any) => {
+                _content += child.text + "\r\n"; // sử dụng \r\n\r\n để xuống hàng và tạo khoảng cách giữa các đoạn
+            });
+        });
+
         const slider_data =
         {
             id: _id,
@@ -32,6 +47,9 @@ const NewsPgae = async () => {
             <HeaderApp />
             <MainSlider
                 sliderData={slider}
+            />
+            <DisplayContent
+            // props={news}
             />
             <FooterApp />
         </Box>

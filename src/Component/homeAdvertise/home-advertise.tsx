@@ -4,15 +4,18 @@ import { Button, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
 import './advertise.css'
 import TagNumber from "../tagNumber/tagnumber";
+import { useState } from "react";
+import StudentFormModal from "../formModalRegister/formRegister";
 
 const AboutAdvertise = () => {
+    const [open, setOpen] = useState(false);
 
     const router = useRouter()
     const handleClickRegister = () => {
-        router.push('/');
+        setOpen(true)
     }
     const handleClickLearnMore = () => {
-        router.push('/');
+        router.push('/newsPage');
     }
     return (
         <Container sx={{
@@ -69,6 +72,8 @@ const AboutAdvertise = () => {
                     }} />
                 </div>
             </div >
+            <StudentFormModal open={open} setOpen={setOpen} />
+
         </Container>
 
 

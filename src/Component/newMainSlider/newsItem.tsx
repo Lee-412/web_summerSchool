@@ -3,14 +3,14 @@
 import { Box, Button, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
 import './newsItem.css'
-import TagNumber from "../tagNumber/tagnumber";
-import { use, useState } from "react";
+import { useState } from "react";
 import ModalLearnMore from "./modal_learn_more";
 interface IProps {
     title: string,
     img: string,
     category: string,
-    author: string
+    author: string,
+    content: string,
 }
 
 const NewsItem = (props: IProps) => {
@@ -21,8 +21,8 @@ const NewsItem = (props: IProps) => {
     const handleClickLearnMore = () => {
         setModalLearnMore(true)
     }
-    console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}${props.img}`);
-    console.log(props.category);
+    // console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}${props.img}`);
+    // console.log(props.category);
 
     return (
         <>
@@ -68,8 +68,9 @@ const NewsItem = (props: IProps) => {
             </Container>
             <ModalLearnMore
                 img={props.img}
+                author={props.author}
                 title={props.title}
-                content={props.category}
+                content={props.content}
                 openModal={modal_learnMore}
                 setOpenModal={setModalLearnMore}
             />
