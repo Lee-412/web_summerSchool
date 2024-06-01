@@ -23,7 +23,7 @@ const NewsItem = (props: IProps) => {
     const handleClickLearnMore = () => {
         setModalLearnMore(true)
     }
-    console.log(`${process.env.STRAPI_LINK_URL}${props.img}`);
+    // console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_URL}${props.img}`);
     // console.log(props.category);
 
     return (

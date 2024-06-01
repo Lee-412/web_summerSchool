@@ -109,13 +109,15 @@ export default function AppHeader() {
 
     return (
 
-        <Box sx={{
+        <Box 
+        sx={{
             flexGrow: 0,
-        }}>
+        }} >
             <AppBar position="static"
                 sx={{
                     backgroundColor: "#007ec5",
                 }}
+                className="nav-bar"
             >
 
                 <Toolbar>
