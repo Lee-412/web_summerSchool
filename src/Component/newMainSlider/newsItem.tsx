@@ -11,12 +11,14 @@ interface IProps {
     category: string,
     author: string,
     content: string,
+    data: any
 }
 
 const NewsItem = (props: IProps) => {
 
     const [modal_learnMore, setModalLearnMore] = useState(false)
     const router = useRouter()
+    console.log(props.data);
 
     const handleClickLearnMore = () => {
         setModalLearnMore(true)
@@ -29,7 +31,7 @@ const NewsItem = (props: IProps) => {
             <Container sx={{
                 marginLeft: "3%",
                 display: "flex",
-                height: "500px",
+                height: "80vh",
             }}>
 
                 <div className="left_news" >
@@ -73,6 +75,7 @@ const NewsItem = (props: IProps) => {
                 content={props.content}
                 openModal={modal_learnMore}
                 setOpenModal={setModalLearnMore}
+                data={props.data}
             />
         </>
     )

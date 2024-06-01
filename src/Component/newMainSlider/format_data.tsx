@@ -1,4 +1,5 @@
 'use client'
+import { Result } from 'antd';
 import { Key, useEffect, useState } from 'react';
 
 type TextProps = {
@@ -54,26 +55,32 @@ type DataProps = {
         };
     };
 };
-const fetchData = async (): Promise<{ data: DataProps[] }> => {
-    // Thay thế bằng URL API thực tế của bạn
-    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" });
-    const result = await response.json();
-    return result;
-};
-const DisplayContent = () => {
+// const fetchData = async (): Promise<{ data: DataProps[] }> => {
+//     // Thay thế bằng URL API thực tế của bạn
+//     const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" });
+//     const result = await response.json();
+//     return result;
+// };
+const DisplayContent = (props: any) => {
+
+    console.log(props);
 
     const [data, setData] = useState<DataProps | null>(null);
-
+    let dataAny;
     useEffect(() => {
-        const getData = async () => {
-            const result = await fetchData();
-            setData(result.data[0]);
-        };
+        // const getData = async () => {
+        // const result = await fetchData();
+        // dataAny = result.data[0]
+        setData(props.props);
+        // };
 
-        getData();
-    }, []); // Chỉ chạy một lần sau khi component mount
-
+        // getData();
+    }, [props]); // Chỉ chạy một lần sau khi component mount
+    // 
+    // setData(props)
     console.log(data);
+    // setData(props)
+    // return (<>lol hien</>)
 
     if (!data) {
         return <div>Loading...</div>;
@@ -189,7 +196,7 @@ const DisplayContent = () => {
 
     return (
         <div>
-            <h1>{data.attributes?.title}</h1>
+            {/* <h1>{data.attributes?.title}</h1> */}
             <div>
                 {data.attributes?.content.map((content, index) => (
                     <div key={index}>{renderContent(content)}</div>
@@ -197,6 +204,9 @@ const DisplayContent = () => {
             </div>
         </div>
     );
+
+
+
 };
 
 export default DisplayContent;

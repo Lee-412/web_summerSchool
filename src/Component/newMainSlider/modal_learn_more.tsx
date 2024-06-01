@@ -4,6 +4,7 @@ import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { Space } from 'antd';
+import DisplayContent from './format_data';
 interface DataModal {
     img: string,
     author: string,
@@ -11,7 +12,7 @@ interface DataModal {
     content: string,
     openModal: boolean,
     setOpenModal: (v: boolean) => void;
-
+    data: any
 }
 
 
@@ -24,6 +25,7 @@ const ModalLearnMore = (props: DataModal) => {
     const HandleClickLike = () => {
         setClicked(!clicked)
     }
+    console.log(props.data);
 
     return (
 
@@ -46,7 +48,10 @@ const ModalLearnMore = (props: DataModal) => {
                 <DialogContentText id="alert-dialog-description">
                     {/* Let Google help apps determine location. This means sending anonymous
                     location data to Google, even when no apps are running. */}
-                    {props.content}
+                    <DisplayContent
+                        props={props.data}
+                    // props={news}
+                    />
                 </DialogContentText>
             </DialogContent>
             <DialogActions>

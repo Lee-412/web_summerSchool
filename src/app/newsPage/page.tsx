@@ -1,5 +1,5 @@
 import FooterApp from "@/Component/footerApp/footer";
-import MainSlider from "@/Component/newMainSlider/mainSlider";
+import MainSlider, { dataSldier } from "@/Component/newMainSlider/mainSlider";
 import HeaderApp from "@/Component/headerApp/header";
 import { Box } from "@mui/material";
 import DisplayContent from "@/Component/newMainSlider/format_data";
@@ -30,7 +30,7 @@ const NewsPgae = async () => {
             });
         });
 
-        const slider_data =
+        const slider_data: dataSldier =
         {
             id: _id,
             author: _author,
@@ -38,6 +38,7 @@ const NewsPgae = async () => {
             category: _category,
             img: img_url,
             title: title,
+            data: new1
         }
         slider.push(slider_data)
     })
@@ -47,10 +48,9 @@ const NewsPgae = async () => {
             <HeaderApp />
             <MainSlider
                 sliderData={slider}
+            // data={news.data[0]}
             />
-            <DisplayContent
-            // props={news}
-            />
+
             <FooterApp />
         </Box>
     )

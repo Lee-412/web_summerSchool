@@ -7,13 +7,18 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import NewsItem from './newsItem';
 
-interface dataSldier {
+export interface dataSldier {
     id: number,
     author: string,
     content: string,
     category: string,
     img: string,
     title: string,
+    data: any
+}
+interface dataProps {
+    sliderData: dataSldier,
+    data: any
 }
 const ImageSlider = (props: any) => {
 
@@ -26,7 +31,9 @@ const ImageSlider = (props: any) => {
             // (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
             (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
 
+
     };
+    // console.log(props.data);
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex === props.sliderData.length - 1 ? 0 : prevIndex + 1));
@@ -48,6 +55,8 @@ const ImageSlider = (props: any) => {
                             props.sliderData.map((data: dataSldier,
 
                                 index: number) => {
+                                console.log(data.data);
+
                                 return (
                                     <div
                                         key={data.id}
@@ -60,7 +69,8 @@ const ImageSlider = (props: any) => {
                                             title={data.title}
                                             category={data.category}
                                             img={data.img}
-                                            content={data.content} />
+                                            content={data.content}
+                                            data={data.data} />
                                     </div>
                                 )
                             })
@@ -75,7 +85,8 @@ const ImageSlider = (props: any) => {
                             title={"No entry data"}
                             category={"No entry data"}
                             img={""}
-                            content={"no entry "} />
+                            content={"no entry "}
+                            data={""} />
 
                     </Box>
                 </>
