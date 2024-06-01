@@ -1,7 +1,7 @@
 "use client"
 
+import './searchBar.css'
 import { Box, Container, Dialog, IconButton } from "@mui/material";
-import SearchBase from "../searchBase/search";
 import ReviewCard from "../cardBase/card";
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
@@ -62,6 +62,7 @@ const HomeCourses = (props: ICdata) => {
             }}>
 
             <Box
+                className = 'search-bar'
                 sx={{
 
                     p: '0.25% 2%', display: 'flex', width: 800,
