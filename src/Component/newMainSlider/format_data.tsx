@@ -3,6 +3,8 @@ import { Result } from 'antd';
 import { Key, useEffect, useState } from 'react';
 
 type TextProps = {
+    url: any;
+    children: any;
     type: string;
     text: string;
     bold?: boolean;
@@ -10,6 +12,7 @@ type TextProps = {
     underline?: boolean;
     strikethrough?: boolean;
     code?: boolean;
+    link?: string;
 };
 
 type ContentProps = {
@@ -55,55 +58,53 @@ type DataProps = {
         };
     };
 };
-// const fetchData = async (): Promise<{ data: DataProps[] }> => {
-//     // Thay thế bằng URL API thực tế của bạn
-//     const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" });
-//     const result = await response.json();
-//     return result;
-// };
+
 const DisplayContent = (props: any) => {
 
     console.log(props);
 
     const [data, setData] = useState<DataProps | null>(null);
-    let dataAny;
     useEffect(() => {
-        // const getData = async () => {
-        // const result = await fetchData();
-        // dataAny = result.data[0]
-        setData(props.props);
-        // };
 
-        // getData();
+        setData(props.props);
+
     }, [props]); // Chỉ chạy một lần sau khi component mount
-    // 
-    // setData(props)
+
     console.log(data);
-    // setData(props)
-    // return (<>lol hien</>)
+
 
     if (!data) {
         return <div>Loading...</div>;
     }
 
     const renderText = (textProps: TextProps) => {
-        let textElement = <span>{textProps.text}</span>;
+        let textElement;
+        if (textProps.type === "link") {
+            console.log(textProps);
 
-        if (textProps.bold) {
-            textElement = <strong>{textElement}</strong>;
+            textElement = <a target={`_blank`} href={`${textProps.url}`}>{textProps.children[0].text}</a>;
         }
-        if (textProps.italic) {
-            textElement = <em>{textElement}</em>;
+        else {
+            textElement = <span>{textProps.text}</span>;
+
+            if (textProps.bold) {
+                textElement = <strong>{textElement}</strong>;
+            }
+            if (textProps.italic) {
+                textElement = <em>{textElement}</em>;
+            }
+            if (textProps.underline) {
+                textElement = <u>{textElement}</u>;
+            }
+            if (textProps.strikethrough) {
+                textElement = <del>{textElement}</del>;
+            }
+            if (textProps.code) {
+                textElement = <code>{textElement}</code>;
+            }
+
         }
-        if (textProps.underline) {
-            textElement = <u>{textElement}</u>;
-        }
-        if (textProps.strikethrough) {
-            textElement = <del>{textElement}</del>;
-        }
-        if (textProps.code) {
-            textElement = <code>{textElement}</code>;
-        }
+
 
         return textElement;
     };
@@ -113,9 +114,13 @@ const DisplayContent = (props: any) => {
             case 'paragraph':
                 return (
                     <p>
-                        {content.children.map((child, index) => (
-                            <span key={index}>{renderText(child)}</span>
-                        ))}
+                        {content.children.map((child, index) => {
+                            console.log(child.type);
+
+                            return (
+                                <span key={index}>{renderText(child)}</span>
+                            )
+                        })}
                     </p>
                 );
             case 'heading':
@@ -198,9 +203,19 @@ const DisplayContent = (props: any) => {
         <div>
             {/* <h1>{data.attributes?.title}</h1> */}
             <div>
-                {data.attributes?.content.map((content, index) => (
-                    <div key={index}>{renderContent(content)}</div>
-                ))}
+                {data.attributes?.content.map((content, index) => {
+                    console.log(content);
+                    console.log(content.children);
+
+                    // if (content.children[0] === ") {
+                    //     console.log(content);
+
+                    // }
+                    return (
+                        <div>
+                            <div key={index}>{renderContent(content)}</div>
+                        </div>)
+                })}
             </div>
         </div>
     );
