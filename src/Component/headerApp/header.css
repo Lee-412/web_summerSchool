@@ -5,3 +5,7 @@
 .btn:hover{
     opacity: 0.8;
 }
+
+@media screen and(max-width: 389px) {
+    
+}
