@@ -27,10 +27,16 @@ const NewsItem = (props: IProps) => {
     return (
         <>
             <Container sx={{
-                marginLeft: "3%",
+                marginLeft: { xs: "0%", sm: "3%" },
                 display: "flex",
-                height: "80vh",
-            }}>
+                // flexDirection: { xs: "column", md: "row" },
+                // alignItems: { xs: "center", md: "center" },
+                height: { md: "80vh", xs: "80%" },
+                // height: "80vh"
+
+            }}
+                className="slide_container"
+            >
 
                 <div className="left_news" >
 
@@ -54,14 +60,15 @@ const NewsItem = (props: IProps) => {
                 </div>
 
                 <div className="right_news">
-                    <img src={`http://127.0.0.1:1337${props.img}`} alt="" style={{
-                        width: "90%",
-                        height: "100%",
-                        objectFit: 'cover',
-                        borderRadius: "50px",
+                    <img src={`http://127.0.0.1:1337${props.img}`} alt=""
+                        className="image"
+                        style={{
+                            width: "90%",
+                            height: "100%",
+                            objectFit: 'cover',
+                            borderRadius: "50px",
 
-                    }} />
-
+                        }} />
 
                 </div>
 

@@ -101,7 +101,7 @@ export default function AppHeader() {
                         variant="h6"
                         noWrap
                         component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer', marginLeft: "3%" }}
+                        sx={{ display: { xs: 'block', sm: 'block' }, cursor: 'pointer', marginLeft: "3%" }}
                         onClick={handleRedirectHome}
                     >
                         Eduverse
