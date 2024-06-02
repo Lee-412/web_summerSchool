@@ -1,3 +1,103 @@
+@media screen and (max-width: 480px) {
+
+    .divContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-left: 0 !important;
+        margin-top: 15% !important;
+    }
+
+    .lefDiv,
+    .rightDiv {
+        width: 100%;
+        text-align: center;
+        margin-left: 0 !important;
+        font-size: small;
+    }
+
+    .rightDiv img {
+        width: 70% !important;
+        height: auto !important;
+        border-radius: 2% !important;
+        margin-left: 0 !important;
+    }
+
+    .title {
+        font-size: small;
+    }
+
+    .divButton {
+        display: flex;
+        flex-direction: row;
+        /* width: 30% !important; */
+        height: auto !important;
+        border-radius: 2% !important;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        /* margin-left: 0 !important;
+            margin-top: 3% !important; */
+    }
+
+    .tag_number {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        margin-bottom: 3% !important;
+    }
+
+}
+
+@media screen and (min-width: 481px) and (max-width: 769px) {
+
+    .divContainer {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-left: 0 !important;
+        margin-top: 15% !important;
+    }
+
+    .lefDiv,
+    .rightDiv {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+        font-size: small;
+        margin-left: 0 !important;
+    }
+
+    .rightDiv img {
+        width: 30% !important;
+        height: auto !important;
+        border-radius: 2% !important;
+        margin-left: 0 !important;
+    }
+
+    .divButton {
+        display: flex;
+        flex-direction: row;
+        /* width: 30% !important; */
+        height: auto !important;
+        border-radius: 2% !important;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        /* margin-left: 0 !important;
+        margin-top: 3% !important; */
+    }
+
+    .tag_number {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        margin-bottom: 3% !important;
+    }
+
+}
+
 .divContainer {
     background-color: #FFFFFF !important;
     width: '100%';

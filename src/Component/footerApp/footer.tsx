@@ -40,7 +40,7 @@ export default function FooterApp() {
             <div className="rightDivFooter"
 
             >
-                <Button
+                {/* <Button
                     onClick={handleRedirectHome}
                     variant="contained"
                     // className="btnGetStarted"
@@ -55,7 +55,7 @@ export default function FooterApp() {
                     }}
                 >
                     Get Started
-                </Button>
+                </Button> */}
 
                 <Button
                     onClick={handleRedirectHome}

@@ -126,7 +126,10 @@ const ImageSlider = (props: any) => {
             <Box sx={{
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "Center"
+                justifyContent: "Center",
+                marginBottom: "1%",
+                marginTop: "1%"
+
             }}>
                 <Button onClick={handlePrev}><ArrowBackIosNewIcon /></Button>
                 <Button onClick={handleNext}><ArrowForwardIosIcon /></Button>

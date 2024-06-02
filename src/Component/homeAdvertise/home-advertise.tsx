@@ -52,10 +52,12 @@ const AboutAdvertise = () => {
 
 
                     </div>
-                    <div style={{
-                        display: "flex",
-                        marginTop: "30px"
-                    }}>
+                    <div
+                        className="tag_number"
+                        style={{
+                            display: "flex",
+                            marginTop: "30px"
+                        }}>
                         <TagNumber title={"100K+"} des={"students"} />
                         <TagNumber title={"1K+"} des={"students"} />
                         <TagNumber title={"100+"} des={"students"} />

@@ -3,7 +3,6 @@ import "../cardBase/cardFeature.css"
 import { Avatar, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { Space } from 'antd';
 import DisplayContent from './format_data';
 interface DataModal {
     img: string,
@@ -34,6 +33,8 @@ const ModalLearnMore = (props: DataModal) => {
             onClose={HandleCancle}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
+            sx={{
+            }}
         >
             <DialogTitle id="alert-dialog-title" sx={{ display: "flex", alignItems: "center" }}>
                 <Avatar src={`http://127.0.0.1:1337${props.img}`} alt="icon"></Avatar>
