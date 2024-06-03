@@ -14,13 +14,14 @@ const genders = [
     { value: 'other', label: 'Other' },
 ];
 const roles = [
-    { value: 'Student', label: 'Student' },
-    { value: 'Worker', label: 'Worker' },
-    { value: 'Other', label: 'Other' },
+    { value: 'Sinh viên', label: 'Student' },
+    { value: 'Người đi làm', label: 'Worker' },
+    { value: 'Khác', label: 'Other' },
 ];
+// phần này không sửa việt thành anh nữa, t đã làm theo cái cũ của m r
 
 
-const expertise_levelles = [
+const expertise_levels = [
     { value: 'Novice', label: 'Novice' },
     { value: 'Intermediate', label: 'Intermediate' },
     { value: 'Advance', label: 'Advance' },
@@ -80,6 +81,7 @@ const StudentFormModal = (props: any) => {
             Address: formData.address,
             Purpose: formData.purpose,
             classification: formData.role,
+            expertise: formData.expertise
 
         }
         let formdata = new FormData()
@@ -231,7 +233,7 @@ const StudentFormModal = (props: any) => {
                                         value={formData.expertise}
                                         onChange={handleChange}
                                     >
-                                        {expertise_levelles.map((option) => (
+                                        {expertise_levels.map((option) => (
                                             <MenuItem key={option.value} value={option.value}>
                                                 {option.label}
                                             </MenuItem>
