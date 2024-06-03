@@ -13,9 +13,9 @@ export default async function HomePage() {
     <Box sx={{
     }}>
       <HeaderApp />
-      <AboutAdvertise />
-      <UpcomingCourses/>
-      <Feature/>
+      {/* <AboutAdvertise /> */}
+      <UpcomingCourses />
+      <Feature />
       <FooterApp />
     </Box>
   );

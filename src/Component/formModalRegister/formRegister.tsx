@@ -14,9 +14,16 @@ const genders = [
     { value: 'other', label: 'Other' },
 ];
 const roles = [
-    { value: 'Sinh viên', label: 'Student' },
-    { value: 'Người đi làm', label: 'Worker' },
-    { value: 'Khác', label: 'Other' },
+    { value: 'Student', label: 'Student' },
+    { value: 'Worker', label: 'Worker' },
+    { value: 'Other', label: 'Other' },
+];
+
+
+const expertise_levelles = [
+    { value: 'Novice', label: 'Novice' },
+    { value: 'Intermediate', label: 'Intermediate' },
+    { value: 'Advance', label: 'Advance' },
 ];
 // interface data {
 //     open: boolean,
@@ -42,6 +49,7 @@ const StudentFormModal = (props: any) => {
         courses: '',
         // avatar: new File([""], "filename"),
         purpose: '',
+        expertise: ''
     });
 
     const handleChange = (e: any) => {
@@ -101,6 +109,7 @@ const StudentFormModal = (props: any) => {
                 name: '',
                 gender: '',
                 role: '',
+                expertise: '',
                 msv: '',
                 email: '',
                 address: '',
@@ -208,6 +217,21 @@ const StudentFormModal = (props: any) => {
                                         onChange={handleChange}
                                     >
                                         {roles.map((option) => (
+                                            <MenuItem key={option.value} value={option.value}>
+                                                {option.label}
+                                            </MenuItem>
+                                        ))}
+                                    </TextField>
+                                    <TextField
+                                        required
+                                        select
+                                        name="expertise"
+                                        label="expertise leveles"
+                                        fullWidth
+                                        value={formData.expertise}
+                                        onChange={handleChange}
+                                    >
+                                        {expertise_levelles.map((option) => (
                                             <MenuItem key={option.value} value={option.value}>
                                                 {option.label}
                                             </MenuItem>
