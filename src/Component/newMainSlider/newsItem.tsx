@@ -13,6 +13,16 @@ interface IProps {
     content: string,
     data: any
 }
+export interface Data_advertise {
+    img: string,
+    title: string,
+    fee: string,
+    size: string,
+    start_day: string,
+    end_day: string,
+    available: string
+
+}
 
 const NewsItem = (props: IProps) => {
 
@@ -29,11 +39,7 @@ const NewsItem = (props: IProps) => {
             <Container sx={{
                 marginLeft: { xs: "0%", sm: "3%" },
                 display: "flex",
-                // flexDirection: { xs: "column", md: "row" },
-                // alignItems: { xs: "center", md: "center" },
                 height: { md: "80vh", xs: "80%" },
-                // height: "80vh"
-
             }}
                 className="slide_container"
             >
@@ -64,7 +70,7 @@ const NewsItem = (props: IProps) => {
                         className="image"
                         style={{
                             width: "90%",
-                            height: "100%",
+                            height: "80%",
                             objectFit: 'cover',
                             borderRadius: "50px",
 

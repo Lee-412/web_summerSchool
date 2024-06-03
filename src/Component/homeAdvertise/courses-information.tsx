@@ -8,31 +8,17 @@ import CustomizedSnackbars from '@/Component/customizeSnackedBar/SnackedBar';
 import SuccessBar from '@/Component/customizeSnackedBar/SuccesBar';
 import validateRegisterDataErrs from '@/Component/formModalRegister/validateData';
 import findStudentId from '@/Component/formModalRegister/findStudent';
-const genders = [
-    { value: 'male', label: 'Male' },
-    { value: 'female', label: 'Female' },
-    { value: 'other', label: 'Other' },
-];
-const roles = [
-    { value: 'Student', label: 'Student' },
-    { value: 'Worker', label: 'Worker' },
-    { value: 'Other', label: 'Other' },
-];
+import { Data_advertise } from './home-advertise';
+import { Flex } from 'antd';
 
+interface Data_courses {
+    open: boolean,
+    setOpen: (v: boolean) => void,
+    props_data: Data_advertise | null | undefined
+}
 
-const expertise_levelles = [
-    { value: 'Novice', label: 'Novice' },
-    { value: 'Intermediate', label: 'Intermediate' },
-    { value: 'Advance', label: 'Advance' },
-];
-// interface data {
-//     open: boolean,
-//     onClose: void
-// }
-console.log(process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL);
-
-const Courses_Information = (props: any) => {
-    const { open, setOpen } = props;
+const Courses_Information = (props: Data_courses) => {
+    const { open, setOpen, props_data } = props;
 
 
     const handleCancel = () => {
@@ -40,15 +26,43 @@ const Courses_Information = (props: any) => {
     }
     return (
         <>
-            <Dialog open={open} onClose={props.onClose} maxWidth="md" fullWidth>
-                <DialogTitle>Register new students</DialogTitle>
+            <Dialog open={open} maxWidth="sm" fullWidth>
+                <DialogTitle>Thông tin về khoá học</DialogTitle>
                 <DialogContent>
-                    <Grid container spacing={3}>
+                    <Grid sx={{
+                        display: "flex",
+                        flexDirection: { xs: "column-reverse", sm: "row", md: "row" }
+                    }}>
 
-                        <Grid item xs={12}>
+                        <Grid sx={{
+                            width: {
+                                xs: "100%", sm: "50%", md: "50%"
+                            },
+                            // marginLeft: { xs: "1%", sm: "2%", md: "2%" },
+                            // alignItems: "center",
 
+                        }
+                        } >
+                            <Grid item xs={3} >
+                                Tên khoá học: {props_data?.title}
+                            </Grid>
+                            <Grid item xs={8}>
+                                <span> Ngày bắt đầu: {props_data?.start_day}</span>
+                            </Grid>
+                            <Grid item xs={8} >
+                                <span>   Ngày kết thúc: {props_data?.end_day}</span>
+                            </Grid>
+                            <Grid item xs={8}>
+                                <span>  Giá khoá học: {props_data?.fee} vnd</span>
+                            </Grid>
+                            <Grid item xs={8} >
+                                <span>  Số lượng sinh viên: {props_data?.size} vnd</span>
+                            </Grid>
                         </Grid>
-
+                        <Grid
+                        >
+                            <img src={props_data?.img} alt="" />
+                        </Grid>
 
                     </Grid>
                 </DialogContent>

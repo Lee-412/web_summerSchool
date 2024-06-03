@@ -17,10 +17,6 @@ const UpcomingCourses = async () => {
         let _start_day = `${course.attributes.Start}`
         let _end_day = `${course.attributes.end}`
         let _available = `${course.attributes.available}`
-        console.log(_start_day);
-        console.log(_end_day);
-        console.log(_fee);
-        console.log(_size);
 
         let card_info =
         {
@@ -43,9 +39,6 @@ const UpcomingCourses = async () => {
         cards.push(card_info)
         advertise.push(data_courses)
     })
-    console.log(advertise);
-
-    // console.log(cards);
 
     return (
         <>

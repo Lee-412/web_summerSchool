@@ -26,23 +26,29 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
     console.log(advertise);
 
     const [open, setOpen] = useState(false);
-    const [open_information, setOpenInformation] = useState(false)
+    const [open_information, setOpenInformation] = useState(false);
+    const [data, setData] = useState<Data_advertise | null>()
     const router = useRouter()
     const handleClickRegister = () => {
         setOpen(true)
     }
     const handleClickLearnMore = () => {
+
         setOpenInformation(true)
     }
     return (
         <Container sx={{
-            marginLeft: "3%"
+            display: "flex",
+            justifyContent: "center",
+            alignContent: "center",
+            flexDirection: "column"
+
         }}>
             {
                 advertise.map((courses: Data_advertise) => {
                     if (courses.available === "true") {
                         return (
-                            <div className="divContainer">
+                            <div className="divContainer"   >
 
                                 <div className="lefDiv" >
 
@@ -50,9 +56,6 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
                                         {courses.title}
                                     </span>
 
-                                    {/* <p className="infor">
-                                        Accessible education for all.
-                                    </p> */}
                                     <div className="divButton">
                                         <Button
                                             onClick={handleClickRegister}
@@ -62,7 +65,10 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
                                             Đăng ký
                                         </Button>
                                         <Button
-                                            onClick={handleClickLearnMore}
+                                            onClick={() => {
+                                                setData(courses)
+                                                handleClickLearnMore()
+                                            }}
                                             variant="outlined"
                                             className="btnLeanrMore"
                                         >
@@ -83,7 +89,7 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
                                     </div>
                                 </div>
                                 <div className="rightDiv">
-                                    <img src="http://127.0.0.1:1337/uploads/thumbnail_3_055694c7b4.jfif" alt="" style={{
+                                    <img src={courses.img} alt="" style={{
                                         width: "90%",
                                         height: "73%",
                                         objectFit: 'cover',
@@ -94,67 +100,17 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
                             </div >
                         )
                     }
+
                 })
             }
-            {/* <div className="divContainer">
 
-                <div className="lefDiv" >
-
-                    <span className="title">
-                        Knowledge for
-                    </span>
-                    <span className="title">
-                        everyone, everywhere
-                    </span>
-                    <p className="infor">
-                        Accessible education for all.
-                    </p>
-                    <div className="divButton">
-                        <Button
-                            onClick={handleClickRegister}
-                            variant="contained"
-                            className="btnGetStarted"
-                        >
-                            Đăng ký
-                        </Button>
-                        <Button
-                            onClick={handleClickLearnMore}
-                            variant="outlined"
-                            className="btnLeanrMore"
-                        >
-                            Learn More
-                        </Button>
-
-
-                    </div>
-                    <div
-                        className="tag_number"
-                        style={{
-                            display: "flex",
-                            marginTop: "30px"
-                        }}>
-                        <TagNumber title={"100K+"} des={"students"} />
-                        <TagNumber title={"1K+"} des={"students"} />
-                        <TagNumber title={"100+"} des={"students"} />
-
-                    </div>
-                </div>
-                <div className="rightDiv">
-                    <img src="http://127.0.0.1:1337/uploads/thumbnail_3_055694c7b4.jfif" alt="" style={{
-                        width: "90%",
-                        height: "73%",
-                        objectFit: 'cover',
-                        borderRadius: "50px",
-
-                    }} />
-                </div>
-            </div > */}
             <StudentFormModal open={open} setOpen={setOpen} />
             <Courses_Information
                 open={open_information}
                 setOpen={setOpenInformation}
+                props_data={data}
             />
-        </Container>
+        </Container >
 
 
     )

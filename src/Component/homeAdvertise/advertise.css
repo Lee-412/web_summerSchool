@@ -1,30 +1,32 @@
 @media screen and (max-width: 480px) {
 
     .divContainer {
-        display: flex;
         flex-direction: column-reverse;
         align-items: center;
         margin-left: 0 !important;
-        margin-top: 15% !important;
+        margin-top: 0 !important
     }
 
     .lefDiv,
     .rightDiv {
-        width: 100%;
+        width: 90%;
         text-align: center;
         margin-left: 0 !important;
         font-size: small;
+        margin-top: 0 !important;
     }
 
     .rightDiv img {
-        width: 70% !important;
+        width: 100% !important;
         height: auto !important;
         border-radius: 2% !important;
+        margin-top: 0 !important;
         margin-left: 0 !important;
     }
 
     .title {
-        font-size: small;
+        font-size: large;
+
     }
 
     .divButton {
@@ -36,8 +38,7 @@
         align-items: center;
         align-content: center;
         justify-content: center;
-        /* margin-left: 0 !important;
-            margin-top: 3% !important; */
+
     }
 
     .tag_number {
@@ -56,20 +57,20 @@
         flex-direction: column-reverse;
         align-items: center;
         margin-left: 0 !important;
-        margin-top: 15% !important;
     }
 
     .lefDiv,
     .rightDiv {
-        width: 100%;
+        width: 100% !important;
         text-align: center;
         margin: 0;
         font-size: small;
+        margin-top: 0 !important;
         margin-left: 0 !important;
     }
 
     .rightDiv img {
-        width: 30% !important;
+        width: 45% !important;
         height: auto !important;
         border-radius: 2% !important;
         margin-left: 0 !important;
@@ -78,14 +79,11 @@
     .divButton {
         display: flex;
         flex-direction: row;
-        /* width: 30% !important; */
         height: auto !important;
         border-radius: 2% !important;
         align-items: center;
         align-content: center;
         justify-content: center;
-        /* margin-left: 0 !important;
-        margin-top: 3% !important; */
     }
 
     .tag_number {
@@ -94,6 +92,11 @@
         align-content: center;
         justify-content: center;
         margin-bottom: 3% !important;
+    }
+
+    .title {
+        font-size: large;
+
     }
 
 }
@@ -133,7 +136,8 @@
 .title {
     color: #007ec5;
     font-weight: bolder;
-    font-size: 50px;
+    font-size: 3vw;
+    margin-bottom: 1vh;
 }
 
 .infor {
