@@ -27,13 +27,13 @@ export default function FooterApp() {
         <div className="footerContainer">
             <div className="leftDivFooter">
 
-                <p className="titleFooter">Eduverser</p>
+                <p className="titleFooter">UETSC</p>
                 <div className="contact">
                     <span>
-                        info@eduverse.edu
+                        uet@vnu.edu.vn
                     </span>
                     <span>
-                        Copyright@2023
+                        Copyright@2017
                     </span>
                 </div>
             </div>
@@ -70,7 +70,7 @@ export default function FooterApp() {
 
                     }}
                 >
-                    Get App
+                    Lên đầu trang
                 </Button>
             </div>
         </div >

@@ -104,7 +104,7 @@ export default function AppHeader() {
                         sx={{ display: { xs: 'block', sm: 'block' }, cursor: 'pointer', marginLeft: "3%" }}
                         onClick={handleRedirectHome}
                     >
-                        Eduverse
+                        UETSC
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "50px", alignItems: "center", cursor: "pointer", '> a': { color: 'unset', textDecoration: 'unset' } }}>
@@ -138,7 +138,7 @@ export default function AppHeader() {
                 </Toolbar>
                 <Box sx={{ backgroundColor: "#015483" }}>
                     <Typography sx={{ marginLeft: "4.5%" }}>
-                        Join us become an expert! Register now by clicking the button below
+                        Khóa học đang mở trong thời điểm hiện tại, bấm đăng ký để tham gia ngay!
                     </Typography>
                 </Box>
             </AppBar>
