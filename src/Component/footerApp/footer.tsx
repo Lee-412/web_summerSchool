@@ -70,7 +70,7 @@ export default function FooterApp() {
 
                     }}
                 >
-                    Lên đầu trang
+                    Về trang chủ
                 </Button>
             </div>
         </div >

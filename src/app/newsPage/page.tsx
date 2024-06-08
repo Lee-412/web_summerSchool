@@ -10,6 +10,10 @@ const NewsPgae = async () => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/news?populate=*`, { cache: "no-store" })
     const news = await res.json()
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
+    const data = await response.json()
+
     console.log(news);
 
     const slider: any[] = []
@@ -45,7 +49,7 @@ const NewsPgae = async () => {
 
     return (
         <Box>
-            <HeaderApp />
+            <HeaderApp data={data}/>
             <MainSlider
                 sliderData={slider}
             // data={news.data[0]}
