@@ -63,13 +63,14 @@
         padding-top: 1% !important;
     }
 
-    .switch-view {
-        display: none;
+    .action-base .switch-view {
+        /* display: none; */
+        margin-left: 2% !important;
     }
-
 
     .actionBase .searchBase {
         width: 100% !important;
+        margin-left: 0px !important;
 
     }
 
