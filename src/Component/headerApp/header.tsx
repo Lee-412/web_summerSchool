@@ -103,13 +103,13 @@ export default function AppHeader(props:ICdata) {
                 </Link>
             </MenuItem>
             <MenuItem onClick={handleMobileMenuClose}>
-                <Link
+                {/* <Link
                     href="/" passHref
                 >
                     <Typography variant="inherit" style={{ color: 'unset', textDecoration: 'none' }}>
                         Hỏi đáp
                     </Typography>
-                </Link>
+                </Link> */}
             </MenuItem>
             <MenuItem onClick={() => { handleMobileMenuClose(); handleOpen(); }}>
                 <Button variant="outlined" style={{ color: '#007ec5' }}>
