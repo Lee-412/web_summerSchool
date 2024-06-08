@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import './newsItem.css'
 import { useState } from "react";
 import ModalLearnMore from "./modal_learn_more";
-interface IProps {
+export interface IProps {
     title: string,
     img: string,
     category: string,

@@ -3,6 +3,7 @@ import MainSlider, { dataSldier } from "@/Component/newMainSlider/mainSlider";
 import HeaderApp from "@/Component/headerApp/header";
 import { Box } from "@mui/material";
 import DisplayContent from "@/Component/newMainSlider/format_data";
+import NewsListItem from "@/Component/newsBase/news";
 
 
 const NewsPgae = async () => {
@@ -50,7 +51,7 @@ const NewsPgae = async () => {
                 sliderData={slider}
             // data={news.data[0]}
             />
-
+            <NewsListItem sliderData={slider} />
             <FooterApp />
         </Box>
     )

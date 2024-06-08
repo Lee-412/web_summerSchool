@@ -1,0 +1,280 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+
+@media screen and (min-width: 0px) and (max-width: 599px) {
+    .col {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /* .bloc {
+        flex: 0 0 calc(30% - 20px);
+        margin-right: 20px;
+    } */
+
+    .col article h1 {
+        font-size: 20px;
+        border-bottom: none;
+        line-height: 30px;
+        margin-left: 0px !important;
+        padding-top: 10% !important;
+    }
+
+    .col article {
+        position: relative;
+        padding-left: 20%;
+        padding-right: 75px;
+        height: 150px;
+        margin-bottom: 30px;
+        background-color: #FFF;
+        border-radius: 150px;
+        cursor: pointer;
+        align-items: center !important;
+    }
+
+    .col article .img-wrapper {
+        width: 15%;
+        margin-bottom: 10px;
+    }
+
+    .col article .img-wrapper img {
+        width: 100%;
+        border-radius: 50%;
+    }
+
+    .col-p {
+        display: none;
+    }
+
+    .row-content {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+
+    .row-content .bloc .row-p {
+        margin-top: 10%;
+    }
+
+    .bloc article h1 {
+        font-size: small !important;
+        height: 50px !important;
+        line-height: 15px !important;
+        padding-top: 1% !important;
+    }
+
+    .switch-view {
+        display: none;
+    }
+
+
+    .actionBase .searchBase {
+        width: 100% !important;
+
+    }
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+    .col {
+        align-items: center !important;
+    }
+
+    .col article h1 {
+        font-size: 20px;
+        height: 65px;
+        line-height: 30px;
+        padding-top: 1% !important;
+    }
+
+    .row-content {
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+
+    .row-content .bloc {
+        flex: 0 0 calc(50% - 20px) !important;
+        margin-right: 20px;
+        box-sizing: border-box;
+    }
+
+    .bloc article h1 {
+        font-size: small !important;
+        height: 60px !important;
+        line-height: 15px !important;
+        padding-top: 1% !important;
+    }
+
+    .switch-view {
+        display: block;
+    }
+
+    .action-base .searchBase {
+        width: 50% !important;
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    .action-base .searchBase {
+        width: 50% !important;
+    }
+}
+
+.container {
+    padding: 0 3% 3% !important;
+    background-color: #CDE !important;
+
+}
+
+/* css khi chuyển ở dạng cột */
+
+h1#header {
+    text-align: center;
+    padding: 3%;
+    font-size: 62px;
+    font-family: "Pacifico";
+    text-shadow: 0 2px 2px #8e8e8e;
+}
+
+.article-wrapper {
+    transition: width .4s;
+}
+
+article {
+    position: relative;
+    padding-left: 180px;
+    padding-right: 75px;
+    height: 150px;
+    margin-bottom: 30px;
+    background-color: #FFF;
+    border-radius: 150px;
+    cursor: pointer;
+}
+
+.img-wrapper {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border-radius: 100px;
+    background-color: #CDE;
+    padding: 10px;
+    z-index: 1000;
+    transition: all .2s;
+}
+
+.img-wrapper img {
+    border-radius: 100px;
+    transition: all .2s;
+    width: 150px;
+}
+
+article h1 {
+    height: 75px;
+    line-height: 75px;
+    font-size: 24px;
+    border-bottom: 2px solid #CDE;
+    color: #428bca;
+    transition: all .4s;
+}
+
+article p {
+    color: #888;
+}
+
+article a {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    height: 100%;
+    line-height: 150px;
+    text-align: center;
+    width: 100%;
+    background-color: #FFF;
+    font-size: 48px;
+    font-style: italic;
+    opacity: 0;
+    color: #428bca !important;
+    transition: all .4s;
+    text-decoration: none !important;
+    border-radius: 150px;
+    font-family: "Pacifico";
+    text-shadow: 0 1px 1px #AAA;
+}
+
+article:hover .img-wrapper {
+    padding: 5px;
+    transform: rotate(5deg);
+}
+
+article:hover .img-wrapper img {
+    width: 160px;
+}
+
+article:hover a {
+    opacity: 1;
+}
+
+/* css khi chuyển sang dạng grid */
+
+.row-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row-content>* {
+    flex: 0 0 calc(33.33% - 20px);
+    margin-right: 20px;
+    box-sizing: border-box;
+}
+
+
+.bloc article {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10%;
+}
+
+.bloc article .img-wrapper {
+    width: 15%;
+    margin-bottom: 10px;
+}
+
+.bloc article .img-wrapper img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.bloc article h1 {
+    font-size: small;
+    margin-left: 20%;
+    height: 45px;
+    line-height: 20px;
+}
+
+/* css các phần action */
+
+.action-base {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.searchBase {
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+
+    background-color: white !important;
+    border-radius: 30px !important
+}
+
+.switch-view {
+    margin-top: 5% !important;
+    margin-bottom: 5% !important;
+    background-color: whitesmoke;
+    border-radius: 1vw;
+    margin-left: 10vw !important;
+}
