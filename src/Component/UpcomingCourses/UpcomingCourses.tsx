@@ -22,6 +22,10 @@ const UpcomingCourses = async () => {
         {
             img: img_url,
             title: title,
+            fee: _fee,
+            size: _size,
+            start_day: _start_day,
+            end_day: _end_day
         }
 
         let data_courses =

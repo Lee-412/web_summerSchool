@@ -6,14 +6,16 @@ import ReviewCard from "../cardBase/card";
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from "react";
+import { Data_advertise } from '@/Component/homeAdvertise/home-advertise';
+import Courses_Information from '@/Component/homeAdvertise/courses-information';
 
 interface ICdata {
-    data: Array<object>
+    data: Array<Data_advertise>
 }
 
 
 const HomeCourses = (props: ICdata) => {
-    let initialData: Array<object> = []
+    let initialData: Array<Data_advertise> = []
     let size = props.data.length
     if (props.data.length >= 6) {
         for (let i = size - 1; i >= size - 6; i--) {
@@ -22,16 +24,19 @@ const HomeCourses = (props: ICdata) => {
     } else {
         initialData = props.data
     }
-
+    console.log(props.data);
+    
 
 
     const [input, setInput] = useState('');
+    const [open, setOpen] = useState(false)
     const [courses_render, setCoursesRender] = useState(initialData)
+
 
     function handdleInput(e: any) {
         let content = e.target.value
         console.log(e.target.value)
-        let course_check: Array<object> = []
+        let course_check: Array<Data_advertise> = []
         props.data.map((course: any) => {
             if (course.title.toLowerCase().includes(content.toLowerCase())) {
                 course_check.push(course)
@@ -76,7 +81,7 @@ const HomeCourses = (props: ICdata) => {
                 </IconButton>
                 <InputBase className='input-courses'
                     sx={{ ml: 1, flex: 1, color: "#63b0db" }}
-                    placeholder="Search for what to learn"
+                    placeholder="Search for upcoming courses"
                     inputProps={{ 'aria-label': 'search for what to learn' }}
                     onChange={handdleInput}
                 />
@@ -92,11 +97,13 @@ const HomeCourses = (props: ICdata) => {
                 paddingBottom: "5%"
             }}>
                 {
-                    courses_render.map((card: any) => {
+                    courses_render.map((card: any, id) => {
+                        
                         return (
-                            <ReviewCard card_info={card} />
+                            <ReviewCard
+                            card_info={card} />
                         )
-                    })
+                    },)
                 }
             </Box>
             <h2 style={{ color: "white" }}>Upcoming Courses...</h2>

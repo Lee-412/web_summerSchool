@@ -3,13 +3,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
 
-import postLearnerData, { postFileData, updateRelationtoCourse } from '@/Component/formModalRegister/postData';
-import CustomizedSnackbars from '@/Component/customizeSnackedBar/SnackedBar';
-import SuccessBar from '@/Component/customizeSnackedBar/SuccesBar';
-import validateRegisterDataErrs from '@/Component/formModalRegister/validateData';
-import findStudentId from '@/Component/formModalRegister/findStudent';
 import { Data_advertise } from './home-advertise';
-import { Flex } from 'antd';
 
 interface Data_courses {
     open: boolean,
@@ -44,24 +38,24 @@ const Courses_Information = (props: Data_courses) => {
                         }
                         } >
                             <Grid item xs={3} >
-                                Tên khoá học: {props_data?.title}
+                               <strong> Tên khoá học:</strong> {props_data?.title}
                             </Grid>
                             <Grid item xs={8}>
-                                <span> Ngày bắt đầu: {props_data?.start_day}</span>
+                                <span> <strong>Ngày bắt đầu đăng ký:</strong> {props_data?.start_day}</span>
                             </Grid>
                             <Grid item xs={8} >
-                                <span>   Ngày kết thúc: {props_data?.end_day}</span>
+                                <span>  <strong> Ngày kết thúc đăng ký:</strong> {props_data?.end_day}</span>
                             </Grid>
                             <Grid item xs={8}>
-                                <span>  Giá khoá học: {props_data?.fee} vnd</span>
+                                <span> <strong> Học phí:</strong> {props_data?.fee} vnd</span>
                             </Grid>
                             <Grid item xs={8} >
-                                <span>  Số lượng sinh viên: {props_data?.size} vnd</span>
+                                <span>  <strong> Số lượng sinh viên tối thiểu để mở lớp:</strong> {props_data?.size} sinh viên</span>
                             </Grid>
                         </Grid>
                         <Grid
                         >
-                            <img src={props_data?.img} alt="" />
+                            <img src={props_data?.img} alt="course image" style={{objectFit:"cover", width: 400, borderRadius: 5}} />
                         </Grid>
 
                     </Grid>
@@ -72,9 +66,6 @@ const Courses_Information = (props: Data_courses) => {
                     </Button>
 
                 </DialogActions>
-
-
-
 
             </Dialog >
         </>
