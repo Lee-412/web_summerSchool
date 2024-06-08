@@ -48,7 +48,7 @@ export default function NewsListItem(props: any) {
         content: '',
         author: '',
         data: '',
-        img: '', // Đảm bảo có thông tin về hình ảnh
+        img: '',
     });
 
     const handleClick = (e: any, article: any) => {
