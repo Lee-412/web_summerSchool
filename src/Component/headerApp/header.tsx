@@ -140,7 +140,7 @@ export default function AppHeader(props:ICdata) {
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: "50px", alignItems: "center", cursor: "pointer", '> a': { color: 'unset', textDecoration: 'unset' } }}>
                         <Link href="/" className="btn">Trang chủ</Link>
                         <Link href="/newsPage" className="btn">Tin tức</Link>
-                        <Link href="/" className="btn">Hỏi đáp</Link>
+                        {/* <Link href="/" className="btn">Hỏi đáp</Link> */}
                         <Button
                             variant="outlined"
                             sx={{
