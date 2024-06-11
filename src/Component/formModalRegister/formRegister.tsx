@@ -103,8 +103,10 @@ const StudentFormModal = (props: any) => {
 
             let patch_err = await updateRelationtoCourse(id)
             console.log(patch_err)
-
-            setOpen(false);
+            setTimeout(()=>{
+                setOpen(false);
+            }, 1500)
+            
             setFormData({
                 identityCode: '',
                 birthday: '',
