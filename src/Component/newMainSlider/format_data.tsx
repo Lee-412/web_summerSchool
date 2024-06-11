@@ -182,8 +182,11 @@ const DisplayContent = (props: any) => {
                     <img
                         src={content.image?.url || ''}
                         alt={content.image?.alt || 'image'}
-                    // width={content.image?.width}
-                    // height={content.image?.height}
+                        style={{
+                            width:"100%",
+                            height:"100%",
+                            objectFit:"cover"
+                        }}
                     />
                 );
             case 'link':

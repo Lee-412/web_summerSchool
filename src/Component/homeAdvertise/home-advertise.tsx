@@ -18,7 +18,8 @@ export interface Data_advertise {
     size: string,
     start_day: string,
     end_day: string,
-    available: string
+    available: string,
+    description: string
 
 }
 
@@ -32,6 +33,8 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
     const [data, setData] = useState<Data_advertise | null>()
     const router = useRouter()
     const rendered_course = advertise.filter((course:Data_advertise)=>{return course.available === "true"})
+    console.log(rendered_course);
+    
     const empty = rendered_course.length === 0 ? true : false
     const handleClickRegister = (e:any) => {
         const courseDateStart = new Date(rendered_course[0].start_day)

@@ -14,6 +14,7 @@ interface Data_courses {
 const Courses_Information = (props: Data_courses) => {
     const { open, setOpen, props_data } = props;
 
+console.log(props_data?.description);
 
     const handleCancel = () => {
         setOpen(false)
@@ -52,7 +53,11 @@ const Courses_Information = (props: Data_courses) => {
                             <Grid item xs={8} >
                                 <span>  <strong> Số lượng sinh viên tối thiểu để mở lớp:</strong> {props_data?.size} sinh viên</span>
                             </Grid>
+                            <Grid item xs={8} >
+                                <span>  <strong> Mo tả khóa học:</strong> {props_data?.description}</span>
+                            </Grid>
                         </Grid>
+                        
                         <Grid
                         >
                             <img src={props_data?.img} alt="course image" style={{objectFit:"cover", width: 400, borderRadius: 5}} />

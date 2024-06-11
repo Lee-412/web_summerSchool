@@ -1,5 +1,6 @@
 import HomeCourses from "@/Component/homeCoursesComponent/mainCourses";
 import AboutAdvertise, { Data_advertise } from "../homeAdvertise/home-advertise";
+import { Description } from "@mui/icons-material";
 const UpcomingCourses = async () => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
@@ -17,6 +18,9 @@ const UpcomingCourses = async () => {
         let _start_day = `${course.attributes.Start}`
         let _end_day = `${course.attributes.end}`
         let _available = `${course.attributes.available}`
+        let _description = `${course.attributes.Description[0].children[0].text}`
+console.log(_description);
+
 
         let card_info =
         {
@@ -25,7 +29,8 @@ const UpcomingCourses = async () => {
             fee: _fee,
             size: _size,
             start_day: _start_day,
-            end_day: _end_day
+            end_day: _end_day,
+            description: _description
         }
 
         let data_courses =
@@ -36,7 +41,8 @@ const UpcomingCourses = async () => {
             size: _size,
             start_day: _start_day,
             end_day: _end_day,
-            available: _available
+            available: _available,
+            description: _description
         }
 
 
