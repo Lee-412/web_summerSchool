@@ -31,7 +31,7 @@ const NewsPgae = async () => {
         let _content = ""
         new1.attributes.content.map((data: any) => {
             data.children.map((child: any) => {
-                _content += child.text + "\r\n"; // sử dụng \r\n\r\n để xuống hàng và tạo khoảng cách giữa các đoạn
+                _content += child.text + "\r\n";
             });
         });
 
@@ -53,7 +53,6 @@ const NewsPgae = async () => {
             <HeaderApp data={data}/>
             <MainSlider
                 sliderData={slider}
-            // data={news.data[0]}
             />
             <NewsListItem sliderData={slider} />
             <FooterApp />

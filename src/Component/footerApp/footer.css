@@ -43,13 +43,6 @@
     margin-top: "3%" !important;
 }
 
-/* 
-.btnLeanrMore {
-    background-color: whitesmoke;
-    color: #007ec5;
-    margin-top: "3%" !important;
-    border: "1px solid white",
-} */
 
 .btnLeanrMore:hover {
     color: blue;

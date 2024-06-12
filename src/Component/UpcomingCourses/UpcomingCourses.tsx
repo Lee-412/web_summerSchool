@@ -5,7 +5,6 @@ const UpcomingCourses = async () => {
 
     const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, { cache: "no-store" })
     const courses = await res.json()
-    console.log(courses);
     let cards: any[] = []
     let advertise: Array<Data_advertise> = []
     courses.data.map((course: any) => {
@@ -19,7 +18,6 @@ const UpcomingCourses = async () => {
         let _end_day = `${course.attributes.end}`
         let _available = `${course.attributes.available}`
         let _description = `${course.attributes.Description[0].children[0].text}`
-console.log(_description);
 
 
         let card_info =

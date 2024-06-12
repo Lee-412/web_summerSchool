@@ -54,7 +54,6 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
     const handleCancel = () => {
         setOpenNoRegister(false)
     }
-    //console.log(empty);
     
 
 
@@ -74,8 +73,6 @@ const AboutAdvertise = ({ advertise }: AboutAdvertiseProps) => {
         }
         else {
             return courses.map((course: Data_advertise) => {
-                console.log(course);
-                console.log(typeof(isEmpty));
                 
                 return (
                     <div className="divContainer"   >

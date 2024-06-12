@@ -33,8 +33,6 @@ console.log(props_data?.description);
                             width: {
                                 xs: "100%", sm: "50%", md: "50%"
                             },
-                            // marginLeft: { xs: "1%", sm: "2%", md: "2%" },
-                            // alignItems: "center",
 
                         }
                         } >
@@ -54,7 +52,7 @@ console.log(props_data?.description);
                                 <span>  <strong> Số lượng sinh viên tối thiểu để mở lớp:</strong> {props_data?.size} sinh viên</span>
                             </Grid>
                             <Grid item xs={8} >
-                                <span>  <strong> Mo tả khóa học:</strong> {props_data?.description}</span>
+                                <span>  <strong> Mô tả khóa học:</strong> {props_data?.description}</span>
                             </Grid>
                         </Grid>
                         

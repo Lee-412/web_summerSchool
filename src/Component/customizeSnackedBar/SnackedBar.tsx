@@ -1,10 +1,8 @@
 "use client"
 
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import { StaticRequire } from 'next/dist/shared/lib/get-img-props';
 
 export default function CustomizedSnackbars(props:any) {
 
@@ -28,7 +26,6 @@ export default function CustomizedSnackbars(props:any) {
             sx={{ width: '100%' }}
             >
             {props.errs.map((err:any)=>{
-              //console.log(err.field);
               
               return <p>{err.field?(err.field + ' field: ' + err.message):('' + err.message)}<br/></p>
             })}

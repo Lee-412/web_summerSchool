@@ -32,7 +32,6 @@
     .divButton {
         display: flex;
         flex-direction: row;
-        /* width: 30% !important; */
         height: auto !important;
         border-radius: 2% !important;
         align-items: center;

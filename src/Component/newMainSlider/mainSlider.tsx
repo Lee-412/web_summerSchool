@@ -30,11 +30,9 @@ const ImageSlider = (props: any) => {
 
     const handlePrev = () => {
         setCurrentIndex((prevIndex) =>
-            // (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
             (prevIndex === 0 ? props.sliderData.length - 1 : prevIndex - 1));
 
     };
-    // console.log(props.data);
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => (prevIndex === props.sliderData.length - 1 ? 0 : prevIndex + 1));
@@ -42,8 +40,7 @@ const ImageSlider = (props: any) => {
 
     return (
         <Box
-            // className='test'
-            // flexDirection={{xs:""}}
+           
             sx={{
                 display: "flex",
                 justifyContent: "center",
@@ -61,8 +58,6 @@ const ImageSlider = (props: any) => {
                             props.sliderData.map((data: dataSldier,
 
                                 index: number) => {
-                                console.log(data.data);
-
                                 return (
                                     <div
                                         key={data.id}
@@ -98,30 +93,6 @@ const ImageSlider = (props: any) => {
                 </>
 
             }
-            {/* <Box>
-                {
-
-                    // props.sliderData.map((data: {
-                    //     id: number; title: string; category: string; img: string; author: string;
-                    // },
-                    //     index: number) => {
-                    //     return (
-                    //         <div
-                    //             key={data.id}
-                    //             style={{
-                    //                 display: index === currentIndex ? 'block' : 'none'
-                    //             }}>
-
-                    //             <NewsItem
-                    //                 author={data.author}
-                    //                 title={data.title}
-                    //                 category={data.category}
-                    //                 img={data.img} />
-                    //         </div>
-                    //     )
-                    // })
-                }
-            </Box> */}
 
             <Box sx={{
                 display: "flex",

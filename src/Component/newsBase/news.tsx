@@ -40,7 +40,6 @@ export default function NewsListItem(props: any) {
     );
 
 
-    console.log(props);
     const [modalLearnMore, setModalLearnMore] = useState(false);
     const [selectedArticle, setSelectedArticle] = useState({
         id: '',

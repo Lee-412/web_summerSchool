@@ -1,5 +1,4 @@
 'use client'
-import { Result } from 'antd';
 import { Key, useEffect, useState } from 'react';
 
 type TextProps = {
@@ -80,7 +79,6 @@ const DisplayContent = (props: any) => {
     const renderText = (textProps: TextProps) => {
         let textElement;
         if (textProps.type === "link") {
-            console.log(textProps);
 
             textElement = <a target={`_blank`} href={`${textProps.url}`}>{textProps.children[0].text}</a>;
         }
@@ -115,7 +113,6 @@ const DisplayContent = (props: any) => {
                 return (
                     <p>
                         {content.children.map((child, index) => {
-                            console.log(child.type);
 
                             return (
                                 <span key={index}>{renderText(child)}</span>
@@ -204,16 +201,11 @@ const DisplayContent = (props: any) => {
 
     return (
         <div>
-            {/* <h1>{data.attributes?.title}</h1> */}
             <div>
                 {data.attributes?.content.map((content, index) => {
                     console.log(content);
                     console.log(content.children);
 
-                    // if (content.children[0] === ") {
-                    //     console.log(content);
-
-                    // }
                     return (
                         <div>
                             <div key={index}>{renderContent(content)}</div>

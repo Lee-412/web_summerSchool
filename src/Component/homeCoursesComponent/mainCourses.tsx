@@ -7,7 +7,6 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from "react";
 import { Data_advertise } from '@/Component/homeAdvertise/home-advertise';
-import Courses_Information from '@/Component/homeAdvertise/courses-information';
 
 interface ICdata {
     data: Array<Data_advertise>
@@ -24,12 +23,7 @@ const HomeCourses = (props: ICdata) => {
     } else {
         initialData = props.data
     }
-    console.log(props.data);
     
-
-
-    const [input, setInput] = useState('');
-    const [open, setOpen] = useState(false)
     const [courses_render, setCoursesRender] = useState(initialData)
 
 
@@ -49,7 +43,6 @@ const HomeCourses = (props: ICdata) => {
         }
     }
 
-    // console.log(props.data);
 
     return (
         <Box

@@ -19,12 +19,10 @@ const ModalLearnMore = (props: DataModal) => {
     const HandleCancle = () => {
         props.setOpenModal(false)
     }
-    // console.log(props.img);
     const [clicked, setClicked] = useState(false)
     const HandleClickLike = () => {
         setClicked(!clicked)
     }
-    console.log(props.data);
 
     return (
 
@@ -39,7 +37,6 @@ const ModalLearnMore = (props: DataModal) => {
             <DialogTitle id="alert-dialog-title" sx={{ display: "flex", alignItems: "center" }}>
                 <Avatar src={`http://127.0.0.1:1337${props.img}`} alt="icon"></Avatar>
                 {props.author}
-                {/* <br /> */}
             </DialogTitle>
             <DialogTitle id="alert-dialog-title" sx={{ display: "flex", alignItems: "center" }}>
                 {props.title}
@@ -47,11 +44,9 @@ const ModalLearnMore = (props: DataModal) => {
 
             <DialogContent>
                 <DialogContentText id="alert-dialog-description">
-                    {/* Let Google help apps determine location. This means sending anonymous
-                    location data to Google, even when no apps are running. */}
+                    
                     <DisplayContent
                         props={props.data}
-                    // props={news}
                     />
                 </DialogContentText>
             </DialogContent>

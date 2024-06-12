@@ -9,10 +9,8 @@ import Courses_Information from "@/Component/homeAdvertise/courses-information";
 
 export default function ReviewCard(cardInfo: any) {
 
-    // console.log(cardInfo.card_info)
 
     const [open_information, setOpenInformation] = useState(false);
-    //const [data, setData] = useState<Data_advertise | null>()
 
     return (
         <Card 

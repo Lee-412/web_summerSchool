@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Button, Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { useRouter } from "next/navigation";
 import './newsItem.css'
 import { useState } from "react";
@@ -27,9 +27,6 @@ export interface Data_advertise {
 const NewsItem = (props: IProps) => {
 
     const [modal_learnMore, setModalLearnMore] = useState(false)
-    const router = useRouter()
-    console.log(props.data);
-
     const handleClickLearnMore = () => {
         setModalLearnMore(true)
     }

@@ -40,22 +40,6 @@ export default function FooterApp() {
             <div className="rightDivFooter"
 
             >
-                {/* <Button
-                    onClick={handleRedirectHome}
-                    variant="contained"
-                    // className="btnGetStarted"
-                    sx={{
-                        backgroundColor: "#007ec5",
-                        color: "white",
-                        border: "1px solid white",
-                        marginBottom: "5%",
-                        marginTop: "5%",
-                        borderRadius: "15px"
-
-                    }}
-                >
-                    Get Started
-                </Button> */}
 
                 <Button
                     onClick={handleRedirectHome}

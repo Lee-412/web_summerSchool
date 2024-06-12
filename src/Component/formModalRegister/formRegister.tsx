@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button, MenuItem, Grid, Typography, Avatar, Stack, Box } from '@mui/material';
 
-import postLearnerData, { postFileData, updateRelationtoCourse } from '@/Component/formModalRegister/postData';
+import postLearnerData, { updateRelationtoCourse } from '@/Component/formModalRegister/postData';
 import CustomizedSnackbars from '@/Component/customizeSnackedBar/SnackedBar';
 import SuccessBar from '@/Component/customizeSnackedBar/SuccesBar';
 import validateRegisterDataErrs from '@/Component/formModalRegister/validateData';
@@ -18,7 +18,6 @@ const roles = [
     { value: 'Người đi làm', label: 'Worker' },
     { value: 'Khác', label: 'Other' },
 ];
-// phần này không sửa việt thành anh nữa, t đã làm theo cái cũ của m r
 
 
 const expertise_levels = [
@@ -26,10 +25,6 @@ const expertise_levels = [
     { value: 'Intermediate', label: 'Intermediate' },
     { value: 'Advance', label: 'Advance' },
 ];
-// interface data {
-//     open: boolean,
-//     onClose: void
-// }
 console.log(process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL);
 
 const StudentFormModal = (props: any) => {
@@ -48,7 +43,6 @@ const StudentFormModal = (props: any) => {
         address: '',
         phone: '',
         courses: '',
-        // avatar: new File([""], "filename"),
         purpose: '',
         expertise: ''
     });
@@ -59,13 +53,6 @@ const StudentFormModal = (props: any) => {
             ...formData,
             [name]: value,
         });
-    };
-
-    const handleAvatarChange = (e: any) => {
-        // setFormData({
-        //     ...formData,
-        //     avatar: e.target.files[0],
-        // });
     };
     const handleSubmit = async (e: any) => {
         e.preventDefault();
@@ -86,10 +73,7 @@ const StudentFormModal = (props: any) => {
         }
         let formdata = new FormData()
         formdata.append('data', JSON.stringify(dataToServer))
-        console.log(formData);
         let err = await postLearnerData(dataToServer);
-        console.log(err);
-
         if (err !== undefined) {
             let err_arr_feed = validateRegisterDataErrs(err)
             setErrs(err_arr_feed)
@@ -102,7 +86,6 @@ const StudentFormModal = (props: any) => {
             console.log(id);
 
             let patch_err = await updateRelationtoCourse(id)
-            console.log(patch_err)
             setTimeout(()=>{
                 setOpen(false);
             }, 1500)

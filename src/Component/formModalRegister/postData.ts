@@ -1,8 +1,6 @@
 
 
 const postLearnerData = async(formData: object) => {
-    console.log(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`);
-    //updateRelationtoCourse()
     let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/students`, { 
       
         method: "POST", 
@@ -25,18 +23,14 @@ const postLearnerData = async(formData: object) => {
 export const updateRelationtoCourse = async(student_id:number)=>{
     let res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_LINK_API_URL}/courses?populate=*`, {cache: "no-store"})
     let courses = await res.json()
-    //console.log(courses);
     let available_courses = courses.data.filter((course:any)=>{
             return course.attributes.available
     })
-    console.log(available_courses);
     const id_update = available_courses[0].id
-    const maximum_size = parseInt(available_courses[0].attributes.Size) 
     let current_student = []
     if(available_courses[0].students !== undefined) {
          current_student = available_courses[0].students.data
     }
-    console.log('check_come_to_this');
     
     let current_students_id = []
     for(let i = 0; i < current_student.length; i++) {
